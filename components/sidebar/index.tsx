@@ -3,9 +3,9 @@ import React, { Suspense } from 'react'
 import NoteList from './NoteList'
 import NoteListSkeleton from './NoteListSkeleton'
 import { ScrollArea } from '../ui/scroll-area'
-import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import { Plus } from 'lucide-react'
+import SearchInput from './SearchInput'
 
 export default async function Sidebar() {
   return (
@@ -17,7 +17,7 @@ export default async function Sidebar() {
       </div>
 
       <div className='px-3 mb-3 flex'>
-        <Input placeholder='搜索' />
+        <SearchInput />
         <Button size='sm' className='ml-2'>
           <Plus />
         </Button>
