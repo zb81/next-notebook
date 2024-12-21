@@ -3,6 +3,7 @@
 import { Note } from "@prisma/client"
 import { useSearchParams } from "next/navigation"
 import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card"
+import Link from "next/link"
 
 interface Props {
   notes: Array<Note & { updatedAtStr: string }>
@@ -19,18 +20,20 @@ export default function NoteListFilter({ notes }: Props) {
   return (
     <ul>
       {notes.map(note => (
-        <li key={note.id} className="cursor-pointer mb-3">
-          <Card className="hover:border-primary">
-            <CardHeader className="p-4">
-              <CardTitle
-                className="text-nowrap text-xl text-ellipsis overflow-hidden"
-                title={note.title}
-              >
-                {note.title}
-              </CardTitle>
-              <CardDescription>{note.updatedAtStr}</CardDescription>
-            </CardHeader>
-          </Card>
+        <li key={note.id} className="mb-3">
+          <Link href={`/note/${note.id}`}>
+            <Card className="hover:border-primary">
+              <CardHeader className="p-4">
+                <CardTitle
+                  className="text-nowrap text-xl text-ellipsis overflow-hidden"
+                  title={note.title}
+                >
+                  {note.title}
+                </CardTitle>
+                <CardDescription>{note.updatedAtStr}</CardDescription>
+              </CardHeader>
+            </Card>
+          </Link>
         </li>
       ))}
     </ul>
