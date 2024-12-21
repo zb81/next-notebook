@@ -21,7 +21,7 @@ const allowedAttributes = Object.assign(
 export default function NotePreview({ note }: { note: Note }) {
   const { id, title, updatedAt, content } = note
   return (
-    <div className="prose text-foreground prose-headings:text-foreground">
+    <div className="p-4 prose text-foreground prose-headings:text-foreground">
       <h1>{title}</h1>
       <div>
         <small>最后更新于 {formatDate(updatedAt)}</small>

@@ -8,7 +8,7 @@ interface Props extends PropsWithChildren {
 
 export default function EditButton({ noteId, children }: Props) {
   return (
-    <Link href={`/note/edit/${noteId || ''}`}>
+    <Link href={`/edit/${noteId || ''}`}>
       <Button size='sm' className='ml-2'>
         {children}
       </Button>

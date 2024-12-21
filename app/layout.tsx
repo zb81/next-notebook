@@ -17,7 +17,7 @@ export default function RootLayout({
       <body className="antialiased">
         <div className="flex h-screen overflow-hidden">
           <Sidebar />
-          <div className="flex-1 overflow-hidden p-4">
+          <div className="flex-1 overflow-hidden">
             {children}
           </div>
         </div>

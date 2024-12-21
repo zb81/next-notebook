@@ -21,7 +21,7 @@ export default function NoteListFilter({ notes }: Props) {
     <ul>
       {notes.map(note => (
         <li key={note.id} className="mb-3">
-          <Link href={`/note/${note.id}`}>
+          <Link href={`/${note.id}`}>
             <Card className="hover:border-primary">
               <CardHeader className="p-4">
                 <CardTitle
