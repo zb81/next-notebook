@@ -6,7 +6,7 @@ import "allotment/dist/style.css";
 import { deleteNote, saveNote } from "@/app/actions";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
 import SaveButton from "../SaveButton";
 import NotePreview from "../NotePreview";
 import DeleteButton from "../DeleteButton";
@@ -27,6 +27,11 @@ export default function Editor({ noteId, initialTitle, initialContent }: Props) 
   const isDraft = !noteId
 
   const t = useTranslations('Basic');
+
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
+  if (!mounted) return null
 
   return (
     <Allotment>

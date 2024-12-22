@@ -6,14 +6,17 @@ import SearchInput from './SearchInput'
 import EditButton from '../EditButton'
 import { Plus } from 'lucide-react'
 import { Link } from '@/i18n/routing'
+import LocaleSwitcher from './LocaleSwitcher'
 
 export default async function Sidebar() {
   return (
     <div className='fixed inset-y-0 left-0 w-[260px] border-r flex flex-col'>
-      <div className='py-3 text-center'>
+      <div className='p-3 text-center flex items-center justify-between'>
         <Link href="/">
           <h1 className='text-xl font-bold'>Next Notebook</h1>
         </Link>
+
+        <LocaleSwitcher />
       </div>
 
       <div className='px-3 mb-3 flex'>

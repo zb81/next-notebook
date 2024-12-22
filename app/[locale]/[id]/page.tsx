@@ -20,7 +20,7 @@ export async function generateMetadata(
   }
 
   return {
-    title: `${note.title} - Next Notebook`,
+    title: `${note.title}`,
   }
 }
 
