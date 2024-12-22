@@ -9,7 +9,7 @@ import { Plus } from 'lucide-react'
 
 export default async function Sidebar() {
   return (
-    <div className='fixed h-screen w-[260px] border-r flex flex-col'>
+    <div className='w-[260px] border-r flex flex-col'>
       <div className='py-3 text-center'>
         <Link href="/">
           <h1 className='text-xl font-bold'>Next Notebook</h1>
