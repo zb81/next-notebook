@@ -6,12 +6,16 @@ interface Props {
   formAction: (d: FormData) => void
 }
 
-export default function SaveButton({ formAction }: Props) {
+export default function DeleteButton({ formAction }: Props) {
   const { pending } = useFormStatus()
 
   return (
-    <Button size='sm' formAction={formAction} type='submit' disabled={pending}>
-      {pending ? 'Saving' : 'Save'}
+    <Button
+      size='sm' formAction={formAction}
+      type='submit' disabled={pending}
+      variant='destructive'
+    >
+      {pending ? 'Deleting' : 'Delete'}
     </Button>
   )
 }

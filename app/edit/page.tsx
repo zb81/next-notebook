@@ -1,5 +1,9 @@
 import Editor from "@/components/editor";
 
 export default function Page() {
-  return <Editor initialTitle="Untitled" initialContent="" noteId={null} />
+  return (
+    <div className="h-screen">
+      <Editor initialTitle="Untitled" initialContent="" noteId={null} />
+    </div>
+  )
 }

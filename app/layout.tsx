@@ -15,11 +15,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <div className="flex h-screen overflow-hidden">
-          <Sidebar />
-          <div className="flex-1 overflow-hidden">
-            {children}
-          </div>
+        <Sidebar />
+        <div className="ml-[260px]">
+          {children}
         </div>
       </body>
     </html >

@@ -42,8 +42,8 @@ export default async function Page({ params }: PageProps) {
 
   return (
     <div className="p-4">
-      <div>
-        <small>最后更新于 {formatDate(updatedAt)}</small>
+      <div className="flex justify-center items-center gap-4 mb-3">
+        <small className="text-sm">最后更新于 {formatDate(updatedAt)}</small>
         <EditButton noteId={id}>编辑</EditButton>
       </div>
       <NotePreview title={title} content={content} />
