@@ -1,6 +1,7 @@
 import Editor from "@/components/editor"
 import prisma from "@/lib/prisma"
 import { Metadata } from "next"
+import { getTranslations } from "next-intl/server"
 
 interface PageProps {
   params: Promise<{ id: string }>
@@ -11,13 +12,15 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const id = (await params).id
   const note = await prisma.note.findUnique({ where: { id } })
+  const t = await getTranslations('Basic')
+
 
   if (!note) {
     return { title: 'Next Notebook' }
   }
 
   return {
-    title: `Edit - ${note.title} - Next Notebook`,
+    title: `${t('edit')} - ${note.title} - Next Notebook`,
   }
 }
 

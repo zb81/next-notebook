@@ -10,6 +10,7 @@ import { useActionState, useState } from "react";
 import SaveButton from "../SaveButton";
 import NotePreview from "../NotePreview";
 import DeleteButton from "../DeleteButton";
+import { useTranslations } from "next-intl";
 
 interface Props {
   noteId: string | null
@@ -25,6 +26,8 @@ export default function Editor({ noteId, initialTitle, initialContent }: Props) 
   const [content, setContent] = useState(initialContent)
   const isDraft = !noteId
 
+  const t = useTranslations('Basic');
+
   return (
     <Allotment>
       <Allotment.Pane className="p-4">
@@ -34,8 +37,8 @@ export default function Editor({ noteId, initialTitle, initialContent }: Props) 
             <SaveButton formAction={saveAction} />
           </div>
           {!isDraft && <input type="hidden" name="id" value={noteId} />}
-          <Input value={title} name="title" onChange={e => setTitle(e.target.value)} />
-          <Textarea className="flex-1 resize-none" value={content} name="content" onChange={e => setContent(e.target.value)} />
+          <Input placeholder={t('title')} value={title} name="title" onChange={e => setTitle(e.target.value)} />
+          <Textarea placeholder={t('content')} className="flex-1 resize-none" value={content} name="content" onChange={e => setContent(e.target.value)} />
         </form>
       </Allotment.Pane>
       <Allotment.Pane>

@@ -3,7 +3,7 @@
 import { Note } from "@prisma/client"
 import { useSearchParams } from "next/navigation"
 import { Card, CardDescription, CardHeader, CardTitle } from "../ui/card"
-import Link from "next/link"
+import { Link } from "@/i18n/routing"
 
 interface Props {
   notes: Array<Note & { updatedAtStr: string }>

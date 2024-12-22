@@ -1,0 +1,15 @@
+{
+  "Basic": {
+    "search": "Search",
+    "title": "Enter title here",
+    "content": "Enter content here",
+    "edit": "EDIT",
+    "delete": "DELETE",
+    "deleting": "Deleting...",
+    "save": "SAVE",
+    "saving": "Saving...",
+    "lastUpdated": "Last updated on",
+    "welcome": "Click a note on the left to view something! 🥺",
+    "newNote": "New Note"
+  }
+}

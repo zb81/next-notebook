@@ -3,6 +3,7 @@ import NotePreview from "@/components/NotePreview"
 import prisma from "@/lib/prisma"
 import { formatDate } from "@/lib/utils"
 import { Metadata } from "next"
+import { getTranslations } from "next-intl/server"
 
 interface PageProps {
   params: Promise<{ id: string }>
@@ -30,10 +31,12 @@ export default async function Page({ params }: PageProps) {
     where: { id }
   })
 
+  const t = await getTranslations('Basic');
+
   if (note === null) {
     return (
       <div>
-        Click a note on the left to view something! 🥺
+        {t('welcome')}
       </div>
     )
   }
@@ -43,8 +46,8 @@ export default async function Page({ params }: PageProps) {
   return (
     <div className="p-4">
       <div className="flex justify-center items-center gap-4 mb-3">
-        <small className="text-sm">最后更新于 {formatDate(updatedAt)}</small>
-        <EditButton noteId={id}>编辑</EditButton>
+        <small className="text-sm">{t('lastUpdated')} {formatDate(updatedAt)}</small>
+        <EditButton noteId={id}>{t('edit')}</EditButton>
       </div>
       <NotePreview title={title} content={content} />
     </div>

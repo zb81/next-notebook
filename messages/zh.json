@@ -1,0 +1,15 @@
+{
+  "Basic": {
+    "search": "搜索",
+    "title": "在此输入标题",
+    "content": "在此输入内容",
+    "edit": "编辑",
+    "delete": "删除",
+    "deleting": "删除中...",
+    "save": "保存",
+    "saving": "保存中...",
+    "lastUpdated": "最后更新于",
+    "welcome": "点击左侧的笔记查看！🥺",
+    "newNote": "新笔记"
+  }
+}

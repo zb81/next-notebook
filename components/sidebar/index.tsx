@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import React, { Suspense } from 'react'
 import NoteList from './NoteList'
 import NoteListSkeleton from './NoteListSkeleton'
@@ -6,6 +5,7 @@ import { ScrollArea } from '../ui/scroll-area'
 import SearchInput from './SearchInput'
 import EditButton from '../EditButton'
 import { Plus } from 'lucide-react'
+import { Link } from '@/i18n/routing'
 
 export default async function Sidebar() {
   return (
