@@ -5,9 +5,10 @@ import "allotment/dist/style.css";
 import { saveNote } from "@/app/actions";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import SaveButton from "../SaveButton";
 import { Button } from "../ui/button";
+import NotePreview from "../NotePreview";
 
 interface Props {
   noteId: string | null
@@ -17,20 +18,22 @@ interface Props {
 
 export default function Editor({ noteId, initialTitle, initialContent }: Props) {
   const [, saveAction] = useActionState(saveNote, null)
+  const [title, setTitle] = useState(initialTitle)
+  const [content, setContent] = useState(initialContent)
   const isDraft = !noteId
 
   return (
     <Allotment>
-      <Allotment.Pane className="p-4" minSize={240}>
+      <Allotment.Pane className="p-4">
         {!isDraft && <Button>删除</Button>}
-        <form autoComplete="off">
-          <Input defaultValue={initialTitle} name="title" />
-          <Textarea defaultValue={initialContent} name="content" />
+        <form className="flex h-full flex-col gap-4" autoComplete="off">
+          <Input value={title} name="title" onChange={e => setTitle(e.target.value)} />
+          <Textarea className="flex-1 resize-none" value={content} name="content" onChange={e => setContent(e.target.value)} />
           <SaveButton formAction={saveAction} />
         </form>
       </Allotment.Pane>
       <Allotment.Pane className="p-4">
-        Preview
+        <NotePreview title={title} content={content} />
       </Allotment.Pane>
     </Allotment>
   )

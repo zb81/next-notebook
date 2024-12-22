@@ -1,8 +1,5 @@
-import { formatDate } from "@/lib/utils";
-import { Note } from "@prisma/client";
 import { marked } from 'marked'
 import sanitizeHtml from 'sanitize-html'
-import EditButton from "./EditButton";
 
 const allowedTags = sanitizeHtml.defaults.allowedTags.concat([
   'img',
@@ -18,19 +15,21 @@ const allowedAttributes = Object.assign(
   }
 )
 
-export default function NotePreview({ note }: { note: Note }) {
-  const { id, title, updatedAt, content } = note
-  return (
-    <div className="p-4 prose text-foreground prose-headings:text-foreground">
-      <h1>{title}</h1>
-      <div>
-        <small>最后更新于 {formatDate(updatedAt)}</small>
+interface Props {
+  title: string
+  content: string
+}
 
-        <EditButton noteId={id}>编辑</EditButton>
+export default function NotePreview({ title, content }: Props) {
+  return (
+    <div className='prose text-foreground prose-headings:text-foreground'>
+      <h1>{title}</h1>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: sanitizeHtml(marked(content, { async: false }), { allowedTags, allowedAttributes })
+        }}
+      >
       </div>
-      <div dangerouslySetInnerHTML={{
-        __html: sanitizeHtml(marked(content, { async: false }), { allowedTags, allowedAttributes })
-      }}></div>
     </div>
   )
 }

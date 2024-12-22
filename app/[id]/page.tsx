@@ -1,5 +1,7 @@
+import EditButton from "@/components/EditButton"
 import NotePreview from "@/components/NotePreview"
 import prisma from "@/lib/prisma"
+import { formatDate } from "@/lib/utils"
 import { Metadata } from "next"
 
 interface PageProps {
@@ -36,5 +38,15 @@ export default async function Page({ params }: PageProps) {
     )
   }
 
-  return <NotePreview note={note} />
+  const { title, updatedAt, content } = note
+
+  return (
+    <div className="p-4">
+      <div>
+        <small>最后更新于 {formatDate(updatedAt)}</small>
+        <EditButton noteId={id}>编辑</EditButton>
+      </div>
+      <NotePreview title={title} content={content} />
+    </div>
+  )
 }
