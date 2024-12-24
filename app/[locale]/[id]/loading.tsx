@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function Loading() {
   return (
-    <div className='p-4'>
+    <div className='p-4 max-w-[65ch] mx-auto'>
       <div className='flex items-center mb-8'>
         <Skeleton className='w-1/2 h-10' />
         <Skeleton className='w-[80px] ml-5 h-9 rounded-lg' />

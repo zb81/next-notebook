@@ -4,11 +4,13 @@ import { LanguagesIcon } from "lucide-react";
 import { Button } from "../ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "../ui/popover";
 import { redirect, usePathname } from "@/i18n/routing";
+import Cookies from 'js-cookie'
 
 export default function LocaleSwitcher() {
   const pathname = usePathname()
 
   function handleSwitch(locale: 'zh' | 'en') {
+    Cookies.set('NEXT_LOCALE', locale)
     redirect({ href: pathname, locale })
   }
 
