@@ -20,7 +20,7 @@ export default function NoteListFilter({ notes }: Props) {
   return (
     <ul>
       {notes.map(note => (
-        <li key={note.id} className="mb-3">
+        <li key={note.id} className="p-1">
           <Link href={`/${note.id}`}>
             <Card className="hover:border-primary">
               <CardHeader className="p-4">

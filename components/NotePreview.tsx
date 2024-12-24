@@ -22,7 +22,7 @@ interface Props {
 
 export default function NotePreview({ title, content }: Props) {
   return (
-    <div className='mx-auto prose break-words text-foreground prose-headings:text-foreground'>
+    <div className='mx-auto prose dark:prose-invert break-words'>
       <h1>{title}</h1>
       <div
         dangerouslySetInnerHTML={{

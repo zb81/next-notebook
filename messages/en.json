@@ -10,6 +10,7 @@
     "saving": "Saving...",
     "lastUpdated": "Last updated on",
     "welcome": "Click a note on the left to view something! 🥺",
-    "newNote": "New Note"
+    "newNote": "New",
+    "upload": "Upload markdown file"
   }
 }
