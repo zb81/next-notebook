@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Sidebar from "@/components/sidebar";
 import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider } from 'next-intl'
 import { notFound } from "next/navigation";
 import { getMessages } from "next-intl/server";
+import Header from "@/components/header";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Next Notebook",
@@ -18,11 +19,9 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
 }>) {
-
   const locale = (await params).locale
 
   // Ensure that the incoming `locale` is valid
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   if (!routing.locales.includes(locale as any)) {
     notFound();
   }
@@ -30,14 +29,23 @@ export default async function RootLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body className="antialiased">
-        <NextIntlClientProvider messages={messages}>
-          <Sidebar />
+        <ThemeProvider
+          attribute={"class"}
+          defaultTheme="system"
+          disableTransitionOnChange
+          enableSystem
+        >
+          <NextIntlClientProvider messages={messages}>
+            <Header />
+            {children}
+            {/* <Sidebar />
           <div className="ml-[260px]">
             {children}
-          </div>
-        </NextIntlClientProvider>
+          </div> */}
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html >
   );

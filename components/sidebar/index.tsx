@@ -6,7 +6,6 @@ import SearchInput from './SearchInput'
 import EditButton from '../EditButton'
 import { Plus } from 'lucide-react'
 import { Link } from '@/i18n/routing'
-import LocaleSwitcher from './LocaleSwitcher'
 import Uploader from './Uploader'
 import { getTranslations } from 'next-intl/server'
 
@@ -19,7 +18,6 @@ export default async function Sidebar() {
         <Link href="/">
           <h1 className='text-xl font-bold'>Next Notebook</h1>
         </Link>
-        <LocaleSwitcher />
       </div>
 
       <div className='px-3'>

@@ -11,6 +11,13 @@
     "lastUpdated": "Last updated on",
     "welcome": "Click a note on the left to view something! 🥺",
     "newNote": "New",
-    "upload": "Upload markdown file"
+    "upload": "Upload markdown file",
+    "locale": "Switch language"
+  },
+  "Theme": {
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
   }
 }

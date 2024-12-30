@@ -36,7 +36,7 @@ export default function Uploader() {
 
   return (
     <form>
-      <input name='file' accept='.md' type="file" hidden id="upload" onChange={handleChange} />
+      <input name='file' accept='.md,.txt' type="file" hidden id="upload" onChange={handleChange} />
       <label htmlFor="upload" className='cursor-pointer text-sm underline underline-offset-2'>
         {t('upload')}
       </label>

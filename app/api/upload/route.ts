@@ -4,6 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { writeFile, stat, mkdir } from "node:fs/promises";
 import { join } from "node:path";
 import mime from "mime";
+import { revalidatePath } from "next/cache";
 
 export async function POST(request: NextRequest) {
   const formData = await request.formData()
@@ -24,7 +25,7 @@ export async function POST(request: NextRequest) {
 
   try {
     await stat(uploadDir);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+     
   } catch (e: any) {
     if (e.code === "ENOENT") {
       await mkdir(uploadDir, { recursive: true });
@@ -53,7 +54,7 @@ export async function POST(request: NextRequest) {
     })
 
     // 清除缓存
-    // revalidatePath('/', 'layout')
+    revalidatePath('/')
 
     return NextResponse.json({ fileUrl: `${relativeUploadDir}/${uniqueFilename}`, id: res.id });
   } catch (e) {
