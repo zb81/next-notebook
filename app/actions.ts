@@ -3,6 +3,7 @@
 import { defaultLocale } from "@/i18n/config"
 import { redirect } from "@/i18n/routing"
 import prisma from "@/lib/prisma"
+import { getSessionUserId } from "@/lib/session"
 import { cookies } from "next/headers"
 
 async function getLocale() {
@@ -15,11 +16,13 @@ export async function saveNote(_: unknown, formData: FormData) {
   const title = formData.get('title') as string
   const content = formData.get('content') as string
 
+  const userId = await getSessionUserId()
+
   if (id) {
     await prisma.note.update({ where: { id }, data: { title, content } })
   } else {
     const note = await prisma.note.create({
-      data: { title, content }
+      data: { title, content, authorId: userId },
     })
     id = note.id
   }

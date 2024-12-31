@@ -9,7 +9,7 @@ const publicPages = ["/login"];
 const intlMiddleware = createMiddleware(routing)
 
 const authMiddleware = auth(req => {
-  const locale = req.headers.get('NEXT_LOCALE') || defaultLocale
+  const locale = req.cookies.get('NEXT_LOCALE') || defaultLocale
   const isLoggedIn = !!req.auth
   if (!isLoggedIn) {
     return Response.redirect(new URL(`/${locale}/login`, req.nextUrl))

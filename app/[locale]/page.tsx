@@ -19,7 +19,6 @@ export default async function Page() {
         </EditButton>
         <Uploader />
       </div>
-
       <Suspense fallback={<NoteListSkeleton />}>
         <NoteList />
       </Suspense>
