@@ -5,8 +5,11 @@ import { writeFile, stat, mkdir } from "node:fs/promises";
 import { join } from "node:path";
 import mime from "mime";
 import { revalidatePath } from "next/cache";
+import { getSessionUserId } from "@/lib/session";
 
 export async function POST(request: NextRequest) {
+  const userId = await getSessionUserId()
+
   const formData = await request.formData()
   const file = formData.get('file') as File
 
@@ -49,7 +52,8 @@ export async function POST(request: NextRequest) {
     const res = await prisma.note.create({
       data: {
         title: filename,
-        content: buffer.toString('utf-8')
+        content: buffer.toString('utf-8'),
+        authorId: userId,
       }
     })
 
