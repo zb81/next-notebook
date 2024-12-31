@@ -4,7 +4,7 @@ import NoteList from '@/components/note-list';
 import NoteListSkeleton from '@/components/note-list/NoteListSkeleton';
 import EditButton from '@/components/EditButton';
 import { Plus } from 'lucide-react';
-import Uploader from '@/components/sidebar/Uploader';
+import Uploader from '@/components/Uploader';
 import { getTranslations } from 'next-intl/server';
 
 export default async function Page() {

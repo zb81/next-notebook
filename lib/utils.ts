@@ -13,3 +13,7 @@ export function sleep(ms: number) {
 export function formatDate(date: Date) {
   return dayjs(date).format('YYYY-MM-DD HH:mm:ss')
 }
+
+export function saltAndHashPassword(password: string) {
+  return password
+}

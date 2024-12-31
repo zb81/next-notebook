@@ -19,5 +19,16 @@
     "light": "浅色",
     "dark": "深色",
     "system": "跟随系统"
+  },
+  "Login": {
+    "title": "登录到您的账户",
+    "github": "通过 GitHub 登录",
+    "google": "通过 Google 登录",
+    "or": "或者",
+    "email": "邮箱",
+    "password": "密码",
+    "confirmPassword": "确认密码",
+    "signIn": "登录",
+    "signUp": "创建账号"
   }
 }

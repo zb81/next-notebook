@@ -19,5 +19,16 @@
     "light": "Light",
     "dark": "Dark",
     "system": "System"
+  },
+  "Login": {
+    "title": "Sign in to your account",
+    "github": "Sign in with GitHub",
+    "google": "Sign in with Google",
+    "or": "OR",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "signIn": "Sign in",
+    "signUp": "Create an account"
   }
 }

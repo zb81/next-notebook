@@ -8,7 +8,7 @@ import ThemeToggle from './ThemeToggle'
 
 export default function Header() {
   return (
-    <header className='py-3 pl-4 pr-3 flex items-center justify-between sticky top-0'>
+    <header className='h-14 pl-4 pr-3 flex items-center justify-between bg-background sticky top-0'>
       <Link href="/" className='flex items-center'>
         <Image className='w-7' src={icon} alt="Next Notebook Icon" />
         <h1 className='ml-2 text-lg'>Next Notebook</h1>

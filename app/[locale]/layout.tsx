@@ -40,10 +40,6 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages}>
             <Header />
             {children}
-            {/* <Sidebar />
-          <div className="ml-[260px]">
-            {children}
-          </div> */}
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
