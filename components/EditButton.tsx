@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react"
 import { Button } from "./ui/button"
-import { Link } from "@/i18n/routing"
+import Link from "next/link"
 
 interface Props extends PropsWithChildren {
   noteId: string | null

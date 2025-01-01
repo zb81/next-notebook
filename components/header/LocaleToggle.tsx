@@ -1,21 +1,17 @@
 'use client'
 
-import Cookies from 'js-cookie'
 import { LanguagesIcon } from "lucide-react";
 import { useTranslations } from 'next-intl';
 
-import { redirect, usePathname } from "@/i18n/routing";
 import { Button } from "../ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../ui/dropdown-menu';
+import { setUserLocale } from '@/i18n/service';
 
 export default function LocaleToggle() {
-  const pathname = usePathname()
-
   const t = useTranslations('Basic');
 
   function handleSwitch(locale: 'zh' | 'en') {
-    Cookies.set('NEXT_LOCALE', locale)
-    redirect({ href: pathname, locale })
+    setUserLocale(locale)
   }
 
   return (

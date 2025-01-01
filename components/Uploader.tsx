@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useTranslations } from 'next-intl'
-import { useRouter } from '@/i18n/routing'
+import { useRouter } from 'next/navigation'
 
 export default function Uploader() {
   const t = useTranslations('Basic')

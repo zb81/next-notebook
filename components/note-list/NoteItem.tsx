@@ -1,9 +1,10 @@
-import { Link } from '@/i18n/routing'
 import { Note } from '@prisma/client'
 import React from 'react'
+import { getTranslations } from 'next-intl/server'
+
 import { Card, CardDescription, CardHeader, CardTitle } from '../ui/card'
 import { formatDate } from '@/lib/utils'
-import { getTranslations } from 'next-intl/server'
+import Link from 'next/link'
 
 export default async function NoteItem({ note }: { note: Note }) {
   const t = await getTranslations('Basic')

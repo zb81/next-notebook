@@ -2,9 +2,9 @@ import Image from 'next/image'
 import React from 'react'
 
 import icon from '@/assets/icon.png'
-import { Link } from '@/i18n/routing'
 import LocaleToggle from './LocaleToggle'
 import ThemeToggle from './ThemeToggle'
+import Link from 'next/link'
 
 export default function Header() {
   return (

@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import { routing } from "@/i18n/routing";
 import { NextIntlClientProvider } from 'next-intl'
-import { notFound } from "next/navigation";
-import { getMessages } from "next-intl/server";
+import { getLocale, getMessages } from "next-intl/server";
+
 import Header from "@/components/header";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Next Notebook",
@@ -14,18 +13,10 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
 }>) {
-  const locale = (await params).locale
-
-  // Ensure that the incoming `locale` is valid
-  if (!routing.locales.includes(locale as any)) {
-    notFound();
-  }
-
+  const locale = await getLocale()
   const messages = await getMessages();
 
   return (

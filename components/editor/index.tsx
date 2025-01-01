@@ -1,16 +1,14 @@
 'use client'
 
-import { Allotment } from "allotment";
-import "allotment/dist/style.css";
+import { useTranslations } from "next-intl";
+import { useActionState, useEffect, useState } from "react";
 
 import { deleteNote, saveNote } from "@/app/actions";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useActionState, useEffect, useState } from "react";
 import SaveButton from "../SaveButton";
 import NotePreview from "../NotePreview";
 import DeleteButton from "../DeleteButton";
-import { useTranslations } from "next-intl";
 
 interface Props {
   noteId: string | null
@@ -34,23 +32,19 @@ export default function Editor({ noteId, initialTitle, initialContent }: Props) 
   if (!mounted) return null
 
   return (
-    <Allotment>
-      <Allotment.Pane className="p-4">
-        <form className="flex h-full flex-col gap-4" autoComplete="off">
-          <div className="flex gap-3 flex-wrap">
-            {!isDraft && <DeleteButton formAction={deleteAction} />}
-            <SaveButton formAction={saveAction} />
-          </div>
-          {!isDraft && <input type="hidden" name="id" value={noteId} />}
-          <Input placeholder={t('title')} value={title} name="title" onChange={e => setTitle(e.target.value)} />
-          <Textarea placeholder={t('content')} className="flex-1 resize-none" value={content} name="content" onChange={e => setContent(e.target.value)} />
-        </form>
-      </Allotment.Pane>
-      <Allotment.Pane>
-        <div className="p-4 overflow-x-hidden overflow-y-auto h-full">
-          <NotePreview title={title} content={content} />
+    <div>
+      <form className="flex h-full flex-col gap-4" autoComplete="off">
+        <div className="flex gap-3 flex-wrap">
+          {!isDraft && <DeleteButton formAction={deleteAction} />}
+          <SaveButton formAction={saveAction} />
         </div>
-      </Allotment.Pane>
-    </Allotment>
+        {!isDraft && <input type="hidden" name="id" value={noteId} />}
+        <Input placeholder={t('title')} value={title} name="title" onChange={e => setTitle(e.target.value)} />
+        <Textarea placeholder={t('content')} className="flex-1 resize-none" value={content} name="content" onChange={e => setContent(e.target.value)} />
+      </form>
+      <div className="p-4 overflow-x-hidden overflow-y-auto h-full">
+        <NotePreview title={title} content={content} />
+      </div>
+    </div>
   )
 }

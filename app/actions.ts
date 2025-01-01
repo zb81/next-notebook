@@ -1,15 +1,8 @@
 'use server'
 
-import { defaultLocale } from "@/i18n/config"
-import { redirect } from "@/i18n/routing"
 import prisma from "@/lib/prisma"
 import { getSessionUserId } from "@/lib/session"
-import { cookies } from "next/headers"
-
-async function getLocale() {
-  const c = await cookies()
-  return c.get('NEXT_LOCALE')?.value || defaultLocale
-}
+import { redirect } from "next/navigation"
 
 export async function saveNote(_: unknown, formData: FormData) {
   let id = formData.get('id') as (string | null)
@@ -27,14 +20,11 @@ export async function saveNote(_: unknown, formData: FormData) {
     id = note.id
   }
 
-  const locale = await getLocale()
-
-  redirect({ href: `/${id}`, locale })
+  redirect(`/${id}`)
 }
 
 export async function deleteNote(_: unknown, formData: FormData) {
   const id = formData.get('id') as string
   await prisma.note.delete({ where: { id } })
-  const locale = await getLocale()
-  redirect({ href: '/', locale })
+  redirect('/')
 }
