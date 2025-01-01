@@ -25,7 +25,7 @@ model Note {
 
 model User {
   id       String @id @default(cuid())
-  email    String @unique
+  username String @unique
   password String
   notes    Note[]
 }

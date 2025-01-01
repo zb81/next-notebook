@@ -9,7 +9,8 @@
     "save": "保存",
     "saving": "保存中...",
     "lastUpdated": "最后更新于",
-    "welcome": "点击左侧的笔记查看！🥺",
+    "welcome": "欢迎，",
+    "signOut": "登出",
     "newNote": "新建",
     "upload": "上传 markdown 文件",
     "locale": "切换语言"
@@ -25,10 +26,11 @@
     "github": "通过 GitHub 登录",
     "google": "通过 Google 登录",
     "or": "或者",
-    "email": "邮箱",
+    "username": "用户名",
     "password": "密码",
     "confirmPassword": "确认密码",
     "signIn": "登录",
-    "signUp": "创建账号"
+    "signUp": "创建账号",
+    "tip": "未注册用户将自动注册"
   }
 }

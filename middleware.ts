@@ -1,5 +1,14 @@
 export { auth as middleware } from './auth'
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|login).*)"],
+  matcher: [
+    /**
+     * except for the ones starting with:
+     * - _next/static
+     * - favicon.ico
+     * - login
+     * - api/auth
+     */
+    "/((?!login|api/auth|_next/static|favicon.ico).*)"
+  ],
 };

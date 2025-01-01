@@ -1,36 +1,52 @@
 import NextAuth from "next-auth"
-import Credentials from "next-auth/providers/credentials"
 import GitHub from "next-auth/providers/github"
-import Google from 'next-auth/providers/google'
+import Credentials from 'next-auth/providers/credentials'
 
 import prisma from "./lib/prisma"
+import { User } from "@prisma/client"
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [
-    Google,
     GitHub,
     Credentials({
       credentials: {
-        email: {},
+        username: {},
         password: {},
       },
       async authorize(credentials) {
-        const user = await prisma.user.findUnique({
+        let user: User | null = await prisma.user.findUnique({
           where: {
-            email: credentials.email as string,
-            password: credentials.password as string,
+            username: credentials.username as string,
           }
         })
 
-        console.log(user)
+        if (user && user.password !== credentials.password) {
+          return null
+        }
+
+        if (!user) {
+          user = await prisma.user.create({
+            data: {
+              username: credentials.username as string,
+              password: credentials.password as string,
+            },
+          })
+        }
+
         if (!user) {
           throw new Error("Invalid credentials.")
         }
+
         return user
       }
     })
   ],
   pages: {
-    signIn: ''
+    signIn: '/login'
+  },
+  callbacks: {
+    authorized({ auth }) {
+      return !!auth
+    }
   }
 })

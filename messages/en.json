@@ -9,7 +9,8 @@
     "save": "SAVE",
     "saving": "Saving...",
     "lastUpdated": "Last updated on",
-    "welcome": "Click a note on the left to view something! 🥺",
+    "welcome": "Welcome, ",
+    "signOut": "Sign out",
     "newNote": "New",
     "upload": "Upload markdown file",
     "locale": "Switch language"
@@ -25,10 +26,11 @@
     "github": "Sign in with GitHub",
     "google": "Sign in with Google",
     "or": "OR",
-    "email": "Email",
+    "username": "Username",
     "password": "Password",
     "confirmPassword": "Confirm Password",
     "signIn": "Sign in",
-    "signUp": "Create an account"
+    "signUp": "Create an account",
+    "tip": "Unregistered users will be automatically registered"
   }
 }

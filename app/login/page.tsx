@@ -1,7 +1,6 @@
 import { useTranslations } from 'next-intl'
 
 import GitHubIcon from '@/components/icons/GitHubIcon'
-import GoogleIcon from '@/components/icons/GoogleIcon'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -21,14 +20,10 @@ export default function Page() {
           <form className='w-[400px] flex flex-col gap-4'>
             <Button variant='outline' className='w-full' formAction={async () => {
               'use server'
-              await signIn('github')
+              await signIn('github', { redirectTo: '/' })
             }}>
               <GitHubIcon />
               {t('github')}
-            </Button>
-            <Button variant='outline' className='w-full'>
-              <GoogleIcon />
-              {t('google')}
             </Button>
 
             <div className='my-4 flex items-center gap-3'>
@@ -37,15 +32,22 @@ export default function Page() {
               <div className='flex-grow bg-border h-[1px]'></div>
             </div>
 
-            <Label htmlFor='email'>{t('email')}</Label>
-            <Input id='email' type="email" name='email' />
+            <Label htmlFor='username'>{t('username')}</Label>
+            <Input id='username' name='username' />
 
             <Label htmlFor='password'>{t('password')}</Label>
-            <Input className='' id='password' type="password" name='password' />
+            <Input id='password' type="password" name='password' />
 
-            <Button className='w-full'>{t('signIn')}</Button>
+            <Button className='w-full' formAction={async (formData) => {
+              'use server'
+              await signIn('credentials', {
+                redirectTo: '/',
+                username: formData.get('username'),
+                password: formData.get('password'),
+              })
+            }}>{t('signIn')}</Button>
 
-            <Button variant='link'>{t('signUp')}</Button>
+            <p className='text-center text-sm'>{t('tip')}</p>
           </form>
         </CardContent>
       </Card>
