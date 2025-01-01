@@ -32,5 +32,10 @@
     "signIn": "登录",
     "signUp": "创建账号",
     "tip": "未注册用户将自动注册"
+  },
+  "SignOut": {
+    "title": "确认登出吗？",
+    "cancel": "取消",
+    "confirm": "确认"
   }
 }

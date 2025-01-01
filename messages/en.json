@@ -32,5 +32,10 @@
     "signIn": "Sign in",
     "signUp": "Create an account",
     "tip": "Unregistered users will be automatically registered"
+  },
+  "SignOut": {
+    "title": "Are you sure you want to sign out?",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
   }
 }

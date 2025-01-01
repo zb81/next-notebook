@@ -1,21 +1,18 @@
 import Image from 'next/image'
-import React from 'react'
+import Link from 'next/link'
+import { getTranslations } from 'next-intl/server'
 
 import icon from '@/assets/icon.png'
+import { auth } from '@/auth'
 import LocaleToggle from './LocaleToggle'
 import ThemeToggle from './ThemeToggle'
-import Link from 'next/link'
-import { auth, signOut } from '@/auth'
-import { Button } from '../ui/button'
-import { getTranslations } from 'next-intl/server'
+import { SignOut } from '../login/SignOut'
 
 export default async function Header() {
   const t = await getTranslations('Basic')
 
   const session = await auth()
   const isLoggedIn = !!session?.user
-
-  console.log(session?.user)
 
   return (
     <header className='h-14 pl-4 pr-3 flex items-center justify-between bg-background sticky top-0'>
@@ -28,12 +25,7 @@ export default async function Header() {
         {isLoggedIn && (
           <div className='flex items-center gap-4 mr-3'>
             <span>{t('welcome')}{session!.user!.name}</span>
-            <form action={async () => {
-              'use server'
-              await signOut()
-            }}>
-              <Button variant='secondary' size='sm'>{t('signOut')}</Button>
-            </form>
+            <SignOut />
           </div>
         )}
         <ThemeToggle />
