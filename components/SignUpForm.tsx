@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { ComponentProps, useState } from "react"
 import { Eye, EyeOff } from "lucide-react"
+import { signIn } from 'next-auth/react'
 
 import { Input } from './ui/input'
 import { Button } from './ui/button'
@@ -65,6 +66,11 @@ export default function SignUpForm() {
 
   async function onSubmit(data: FormSchema) {
     await fetch('/api/signup', { method: 'POST', body: JSON.stringify(data) })
+    await signIn('credentials', {
+      redirectTo: '/',
+      login: data.username,
+      password: data.password,
+    })
   }
 
   return (
