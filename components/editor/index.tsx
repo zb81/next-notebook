@@ -32,7 +32,7 @@ export default function Editor({ noteId, initialTitle, initialContent }: Props) 
   if (!mounted) return null
 
   return (
-    <div className="grid grid-cols-2 h-[calc(100vh-3.5rem)]">
+    <div className="container mx-auto grid grid-cols-2 h-[calc(100vh-3.5rem)]">
       <form className="flex h-full flex-col gap-4 p-4" autoComplete="off">
         <div className="flex gap-3 flex-wrap">
           {!isDraft && <DeleteButton formAction={deleteAction} />}
