@@ -16,7 +16,7 @@ export async function saveNote(_: unknown, formData: FormData) {
     await prisma.note.update({ where: { id }, data: { title, content } })
   } else {
     const note = await prisma.note.create({
-      data: { title, content, authorId: userId },
+      data: { title, content, authorId: userId! },
     })
     id = note.id
   }
