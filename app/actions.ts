@@ -1,5 +1,6 @@
 'use server'
 
+import { signIn } from "@/auth"
 import prisma from "@/lib/prisma"
 import { getSessionUserId } from "@/lib/session"
 import { redirect } from "next/navigation"
@@ -27,4 +28,18 @@ export async function deleteNote(_: unknown, formData: FormData) {
   const id = formData.get('id') as string
   await prisma.note.delete({ where: { id } })
   redirect('/')
+}
+
+export async function login(_: unknown, formData: FormData) {
+  try {
+    const res = await signIn('credentials', {
+      login: formData.get('login') as string,
+      password: formData.get('password') as string,
+      redirectTo: '/',
+    })
+    console.log(res)
+  } catch (e) {
+    console.log('error', e)
+  }
+  return true
 }

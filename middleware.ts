@@ -7,8 +7,10 @@ export const config = {
      * - _next/static
      * - favicon.ico
      * - login
+     * - signup
      * - api/auth
+     * - api/signup
      */
-    "/((?!login|api/auth|_next/static|favicon.ico).*)"
+    "/((?!login|signup|api/auth|api/signup|_next/static|favicon.ico).*)"
   ],
 };

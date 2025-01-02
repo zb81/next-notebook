@@ -21,21 +21,36 @@
     "dark": "Dark",
     "system": "System"
   },
+  "Form": {
+    "login": "Username or email",
+    "email": "Email",
+    "username": "Username",
+    "password": "Password",
+    "confirmPassword": "Confirm Password"
+  },
   "Login": {
-    "title": "Sign in to your account",
+    "title": "Sign in to Next Notebook",
     "github": "Sign in with GitHub",
     "google": "Sign in with Google",
     "or": "OR",
-    "username": "Username",
-    "password": "Password",
-    "confirmPassword": "Confirm Password",
     "signIn": "Sign in",
     "signUp": "Create an account",
     "tip": "Unregistered users will be automatically registered"
+  },
+  "SignUp": {
+    "title": "Sign up to Next Notebook"
   },
   "SignOut": {
     "title": "Are you sure you want to sign out?",
     "cancel": "Cancel",
     "confirm": "Confirm"
+  },
+  "Rules": {
+    "usernameMin": "Username must be at least 2 characters",
+    "usernameMax": "Username cannot exceed 12 characters",
+    "email": "Invalid email",
+    "passwordMin": "Password must be at least 6 characters",
+    "passwordMax": "Password cannot exceed 20 characters",
+    "confirmPassword": "The two passwords entered do not match"
   }
 }

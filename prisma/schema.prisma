@@ -15,7 +15,7 @@ datasource db {
 
 model Note {
   id        String   @id @default(cuid())
-  title     String   @db.VarChar(255)
+  title     String
   content   String   @db.Text
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -26,6 +26,8 @@ model Note {
 model User {
   id       String @id @default(cuid())
   username String @unique
+  email    String @unique
+  salt     String
   password String
   notes    Note[]
 }

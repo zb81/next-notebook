@@ -21,21 +21,38 @@
     "dark": "深色",
     "system": "跟随系统"
   },
+  "Form": {
+    "login": "用户名或邮箱",
+    "email": "邮箱",
+    "username": "用户名",
+    "password": "密码",
+    "confirmPassword": "确认密码"
+  },
   "Login": {
     "title": "登录到您的账户",
     "github": "通过 GitHub 登录",
     "google": "通过 Google 登录",
     "or": "或者",
-    "username": "用户名",
-    "password": "密码",
-    "confirmPassword": "确认密码",
     "signIn": "登录",
     "signUp": "创建账号",
     "tip": "未注册用户将自动注册"
+  },
+  "SignUp": {
+    "title": "注册 Next Notebook",
+    "submit": "注册并登录",
+    "back": "已有账号，返回登录"
   },
   "SignOut": {
     "title": "确认登出吗？",
     "cancel": "取消",
     "confirm": "确认"
+  },
+  "Rules": {
+    "usernameMin": "用户名不能少于 2 个字符",
+    "usernameMax": "用户名不能超过 12 个字符",
+    "email": "无效的邮箱",
+    "passwordMin": "密码不能少于 6 个字符",
+    "passwordMax": "密码不能超过 20 个字符",
+    "confirmPassword": "两次输入的密码不一致"
   }
 }

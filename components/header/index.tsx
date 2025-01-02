@@ -6,7 +6,7 @@ import icon from '@/assets/icon.png'
 import { auth } from '@/auth'
 import LocaleToggle from './LocaleToggle'
 import ThemeToggle from './ThemeToggle'
-import { SignOut } from '../login/SignOut'
+import { SignOut } from './SignOut'
 
 export default async function Header() {
   const t = await getTranslations('Basic')

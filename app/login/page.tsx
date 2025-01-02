@@ -1,8 +1,7 @@
 import { useTranslations } from 'next-intl'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import SignInForm from '@/components/login/SignInForm'
-import SignInGitHub from '@/components/login/SignInGitHub'
+import SignInForm from '@/components/LoginForm'
 
 export default function Page() {
   const t = useTranslations('Login')
@@ -14,14 +13,6 @@ export default function Page() {
           <CardTitle className='text-center'>{t('title')}</CardTitle>
         </CardHeader>
         <CardContent className='w-[400px] flex flex-col gap-4'>
-          <SignInGitHub />
-
-          <div className='my-4 flex items-center gap-3'>
-            <div className='flex-grow bg-border h-[1px]'></div>
-            <span className='text-xs text-gray-500'>{t('or')}</span>
-            <div className='flex-grow bg-border h-[1px]'></div>
-          </div>
-
           <SignInForm />
         </CardContent>
       </Card>
