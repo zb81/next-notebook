@@ -11,9 +11,5 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function Page() {
-  return (
-    <div className="h-screen">
-      <Editor initialTitle="Untitled" initialContent="" noteId={null} />
-    </div>
-  )
+  return <Editor initialTitle="Untitled" initialContent="" noteId={null} />
 }

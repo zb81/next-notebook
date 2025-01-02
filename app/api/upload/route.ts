@@ -1,11 +1,11 @@
-import prisma from "@/lib/prisma";
 import dayjs from "dayjs";
 import { NextRequest, NextResponse } from "next/server";
-import { writeFile, stat, mkdir } from "node:fs/promises";
-import { join } from "node:path";
+import { writeFile, stat, mkdir } from "fs/promises";
+import { join } from "path";
 import mime from "mime";
-import { revalidatePath } from "next/cache";
+
 import { getSessionUserId } from "@/lib/session";
+import prisma from "@/lib/prisma";
 
 export async function POST(request: NextRequest) {
   const userId = await getSessionUserId()
@@ -28,7 +28,6 @@ export async function POST(request: NextRequest) {
 
   try {
     await stat(uploadDir);
-     
   } catch (e: any) {
     if (e.code === "ENOENT") {
       await mkdir(uploadDir, { recursive: true });
@@ -53,13 +52,12 @@ export async function POST(request: NextRequest) {
       data: {
         title: filename,
         content: buffer.toString('utf-8'),
-        authorId: userId,
+        authorId: userId!,
+      },
+      include: {
+        author: true
       }
     })
-
-    // 清除缓存
-    revalidatePath('/')
-
     return NextResponse.json({ fileUrl: `${relativeUploadDir}/${uniqueFilename}`, id: res.id });
   } catch (e) {
     console.error(e)

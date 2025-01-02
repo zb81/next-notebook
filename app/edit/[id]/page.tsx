@@ -36,12 +36,10 @@ export default async function Page({ params }: PageProps) {
   }
 
   return (
-    <div className="h-screen">
-      <Editor
-        noteId={note.id}
-        initialTitle={note.title}
-        initialContent={note.content}
-      />
-    </div>
+    <Editor
+      noteId={note.id}
+      initialTitle={note.title}
+      initialContent={note.content}
+    />
   )
 }
