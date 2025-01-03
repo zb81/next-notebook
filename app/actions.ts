@@ -31,15 +31,8 @@ export async function deleteNote(_: unknown, formData: FormData) {
 }
 
 export async function login(_: unknown, formData: FormData) {
-  try {
-    const res = await signIn('credentials', {
-      login: formData.get('login') as string,
-      password: formData.get('password') as string,
-      redirectTo: '/',
-    })
-    console.log(res)
-  } catch (e) {
-    console.log('error', e)
-  }
-  return true
+  await signIn('credentials', {
+    redirect: false,
+    ...(Object.fromEntries(formData.entries())),
+  })
 }

@@ -3,30 +3,29 @@ import Credentials from 'next-auth/providers/credentials'
 import prisma from "./lib/prisma"
 import { comparePassword } from "./lib/crypt"
 
-class InvalidCredentials extends CredentialsSignin {
-  code = "invalid_credentials"
+class InValidCredentialsError extends CredentialsSignin {
+  code = 'invalid_credentials'
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
   providers: [Credentials({
-    credentials: { login: {}, password: {} },
+    credentials: { identifier: {}, password: {} },
     async authorize(credentials) {
-      const login = credentials.login as string
+      const login = credentials.identifier as string
       const password = credentials.password as string
       const user = await prisma.user.findFirst({
         where: { OR: [{ username: login }, { email: login }] }
       })
-      if (!user) {
-        throw new InvalidCredentials()
-      }
-      if (await comparePassword(password, user.salt, user.password)) {
+
+      if (user && await comparePassword(password, user.salt, user.password)) {
         return {
           id: user.id,
           name: user.username,
           email: user.email,
         }
       }
-      throw new InvalidCredentials()
+
+      throw new InValidCredentialsError()
     }
   })],
   pages: {

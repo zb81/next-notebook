@@ -1,10 +1,10 @@
 import { useTranslations } from 'next-intl'
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import SignInForm from '@/components/LoginForm'
+import SignInForm from '@/components/SignInForm'
 
 export default function Page() {
-  const t = useTranslations('Login')
+  const t = useTranslations('SignInForm')
 
   return (
     <div className='h-[calc(100vh-3.5rem)] flex items-center justify-center'>

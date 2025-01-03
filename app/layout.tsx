@@ -5,6 +5,7 @@ import { getLocale, getMessages } from "next-intl/server";
 import Header from "@/components/header";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: "Next Notebook",
@@ -31,6 +32,7 @@ export default async function RootLayout({
           <NextIntlClientProvider messages={messages}>
             <Header />
             {children}
+            <Toaster />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import SignUpForm from '@/components/SignUpForm'
 
 export default function Page() {
-  const t = useTranslations('SignUp')
+  const t = useTranslations('SignUpForm')
 
   return (
     <div className='h-[calc(100vh-3.5rem)] flex items-center justify-center'>
