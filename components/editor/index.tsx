@@ -43,7 +43,7 @@ export default function Editor({ noteId, initialTitle, initialContent }: Props) 
         <Textarea placeholder={t('content')} className="flex-1 resize-none" value={content} name="content" onChange={e => setContent(e.target.value)} />
       </form>
       <div className="p-4 overflow-x-hidden overflow-y-auto h-full">
-        <NotePreview title={title} content={content} />
+        <NotePreview showToc={false} content={content} />
       </div>
     </div>
   )
