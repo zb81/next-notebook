@@ -51,8 +51,9 @@ export default function NotePreview({ content, showToc = true }: Props) {
   const minLevel = Math.min(...toc.map(({ level }) => level))
 
   return (
-    <div className=''>
+    <div>
       <div
+        className='prose dark:prose-invert break-words mx-auto pb-8'
         dangerouslySetInnerHTML={{
           __html: sanitizeHtml(htmlStr, { allowedTags, allowedAttributes })
         }}

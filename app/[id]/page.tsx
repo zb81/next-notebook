@@ -46,8 +46,8 @@ export default async function Page({ params }: PageProps) {
   const { title, updatedAt, content } = note
 
   return (
-    <div className='prose dark:prose-invert break-words mx-auto'>
-      <h1 className="text-center">{title}</h1>
+    <div>
+      <h1 className="text-center text-4xl mb-4 font-bold">{title}</h1>
       <div className="flex justify-center items-center gap-4 mb-4">
         <small className="text-sm">{t('lastUpdated')} {formatDate(updatedAt)}</small>
         <EditButton noteId={id}>{t('edit')}</EditButton>

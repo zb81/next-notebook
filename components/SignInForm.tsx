@@ -94,7 +94,7 @@ export default function SignInForm() {
                 <>
                   {hasError ? <p className='text-red-500 text-sm'>{t(code)}</p> : null}
                   <Button className='w-full'>{t('signIn')}</Button>
-                  <Link className='text-center text-sm underline underline-offset-4' href="/signup">
+                  <Link className='text-center text-sm underline underline-offset-4' href="/sign-up">
                     {t('signUp')}
                   </Link>
                 </>
