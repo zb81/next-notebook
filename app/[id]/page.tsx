@@ -35,8 +35,8 @@ export default async function Page({ params }: PageProps) {
 
   if (note === null) {
     return (
-      <div>
-        {t('welcome')}
+      <div className="text-center">
+        {t('noteNotFound')}
       </div>
     )
   }

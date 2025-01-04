@@ -6,6 +6,7 @@ import mime from "mime";
 
 import { getSessionUserId } from "@/lib/session";
 import prisma from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
 
 export async function POST(request: NextRequest) {
   const userId = await getSessionUserId()
@@ -58,6 +59,7 @@ export async function POST(request: NextRequest) {
         author: true
       }
     })
+    revalidatePath('/', 'layout')
     return NextResponse.json({ fileUrl: `${relativeUploadDir}/${uniqueFilename}`, id: res.id });
   } catch (e) {
     console.error(e)

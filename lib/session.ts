@@ -6,7 +6,7 @@ export async function getSessionUserId() {
   const session = await auth()
 
   if (!session || !session.user) {
-    redirect("/login")
+    redirect("/sign-in")
   }
 
   return session.user.id

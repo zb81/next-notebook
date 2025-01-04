@@ -33,9 +33,4 @@ export async function POST(request: NextRequest) {
   })
 
   return NextResponse.json(user, { status: 200 })
-  // await signIn('credentials', {
-  //   redirectTo: '/',
-  //   login: payload.username,
-  //   password: payload.password
-  // })
 }

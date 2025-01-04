@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { useActionState, useEffect, useState } from "react";
 
-import { deleteNote, saveNote } from "@/app/actions";
+import { deleteNote, saveNote } from "@/actions/note";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import SaveButton from "../SaveButton";

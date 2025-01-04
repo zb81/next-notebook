@@ -10,6 +10,7 @@
     "saving": "Saving...",
     "lastUpdated": "Last updated on",
     "welcome": "Welcome, ",
+    "noteNotFound": "Note not found",
     "signOut": "Sign out",
     "newNote": "New",
     "upload": "Upload markdown file",

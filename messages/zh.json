@@ -10,6 +10,7 @@
     "saving": "保存中...",
     "lastUpdated": "最后更新于",
     "welcome": "欢迎，",
+    "noteNotFound": "找不到这条笔记",
     "signOut": "登出",
     "newNote": "新建",
     "upload": "上传 markdown 文件",
