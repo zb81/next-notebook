@@ -4,4 +4,4 @@
 - [x] i18n
 - [x] CRUD
 - [x] Auth
-- [ ] TOC
+- [x] TOC
