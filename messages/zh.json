@@ -14,6 +14,8 @@
     "signOut": "登出",
     "newNote": "新建",
     "upload": "上传 markdown 文件",
+    "uploading": "上传中，请稍等...",
+    "uploadFailed": "上传失败，请稍候再试",
     "locale": "切换语言"
   },
   "Theme": {

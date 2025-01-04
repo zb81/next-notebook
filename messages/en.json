@@ -14,6 +14,8 @@
     "signOut": "Sign out",
     "newNote": "New",
     "upload": "Upload markdown file",
+    "uploading": "Uploading, please wait...",
+    "uploadFailed": "Upload failed, please try again later",
     "locale": "Switch language"
   },
   "Theme": {

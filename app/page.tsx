@@ -6,6 +6,7 @@ import EditButton from '@/components/EditButton';
 import { Plus } from 'lucide-react';
 import Uploader from '@/components/Uploader';
 import { getTranslations } from 'next-intl/server';
+import { SessionProvider } from 'next-auth/react';
 
 export const dynamic = 'force-dynamic'
 
@@ -19,7 +20,9 @@ export default async function Page() {
           <Plus />
           {t('newNote')}
         </EditButton>
-        <Uploader />
+        <SessionProvider>
+          <Uploader />
+        </SessionProvider>
       </div>
       <Suspense fallback={<NoteListSkeleton />}>
         <NoteList />
