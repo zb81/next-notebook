@@ -1,23 +1,38 @@
 import { Note } from '@prisma/client'
-import React from 'react'
 import { getTranslations } from 'next-intl/server'
-
-import { Card, CardDescription, CardHeader, CardTitle } from '../ui/card'
-import { formatDate } from '@/lib/utils'
 import Link from 'next/link'
+
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card'
+import { formatDate } from '@/lib/utils'
+import DeleteButton from '../DeleteButton'
+import EditButton from '../EditButton'
 
 export default async function NoteItem({ note }: { note: Note }) {
   const t = await getTranslations('Basic')
 
   return (
-    <Link href={`/${note.id}`} title={note.title}>
-      <Card className="hover:border-primary mb-3">
-        <CardHeader className="p-4">
-          <CardTitle className="truncate">{note.title}</CardTitle>
-          <CardDescription>{t('lastUpdated')}{' '}{formatDate(note.updatedAt)}</CardDescription>
-          <CardDescription className='line-clamp-3'>{note.content}</CardDescription>
-        </CardHeader>
-      </Card>
-    </Link>
+    <Card className="h-full">
+      <CardHeader>
+        <CardTitle className="truncate">
+          <Link
+            className='overflow-hidden hover:underline underline-offset-2'
+            href={`/${note.id}`} title={note.title}
+          >
+            {note.title}
+          </Link>
+        </CardTitle>
+        <CardDescription className='flex items-center justify-between'>
+          <span>{t('lastUpdated')}{' '}{formatDate(note.updatedAt)}</span>
+          <div>
+            <EditButton noteId={note.id} />
+            <DeleteButton noteId={note.id} />
+          </div>
+        </CardDescription>
+      </CardHeader>
+
+      <CardContent>
+        <p className='line-clamp-3'>{note.content}</p>
+      </CardContent>
+    </Card>
   )
 }

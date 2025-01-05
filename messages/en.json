@@ -16,7 +16,8 @@
     "upload": "Upload markdown file",
     "uploading": "Uploading, please wait...",
     "uploadFailed": "Upload failed, please try again later",
-    "locale": "Switch language"
+    "locale": "Switch language",
+    "empty": "There's nothing here, go create your first note!"
   },
   "Theme": {
     "toggle": "Toggle theme",
@@ -49,5 +50,13 @@
     "signUp": "Create an account",
     "invalid_credentials": "Invalid username or password",
     "pending": "Pease wait..."
+  },
+  "Delete": {
+    "title": "Are you sure you want to delete this note?",
+    "description": "This operation cannot be undone",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "success": "Deleted successfully",
+    "error": "Failed to delete"
   }
 }

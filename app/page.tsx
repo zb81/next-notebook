@@ -1,14 +1,12 @@
 import React, { Suspense } from 'react'
+import { getTranslations } from 'next-intl/server';
+import { SessionProvider } from 'next-auth/react';
+import { Plus } from 'lucide-react';
 
 import NoteList from '@/components/note-list';
 import NoteListSkeleton from '@/components/note-list/NoteListSkeleton';
 import EditButton from '@/components/EditButton';
-import { Plus } from 'lucide-react';
 import Uploader from '@/components/Uploader';
-import { getTranslations } from 'next-intl/server';
-import { SessionProvider } from 'next-auth/react';
-
-export const dynamic = 'force-dynamic'
 
 export default async function Page() {
   const t = await getTranslations('Basic')
@@ -24,6 +22,7 @@ export default async function Page() {
           <Uploader />
         </SessionProvider>
       </div>
+
       <Suspense fallback={<NoteListSkeleton />}>
         <NoteList />
       </Suspense>

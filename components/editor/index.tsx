@@ -3,12 +3,11 @@
 import { useTranslations } from "next-intl";
 import { useActionState, useEffect, useState } from "react";
 
-import { deleteNote, saveNote } from "@/actions/note";
+import { saveNote } from "@/actions/note";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import SaveButton from "../SaveButton";
 import NotePreview from "../NotePreview";
-import DeleteButton from "../DeleteButton";
 
 interface Props {
   noteId: string | null
@@ -18,7 +17,6 @@ interface Props {
 
 export default function Editor({ noteId, initialTitle, initialContent }: Props) {
   const [, saveAction] = useActionState(saveNote, null)
-  const [, deleteAction] = useActionState(deleteNote, null)
 
   const [title, setTitle] = useState(initialTitle)
   const [content, setContent] = useState(initialContent)
@@ -35,7 +33,6 @@ export default function Editor({ noteId, initialTitle, initialContent }: Props) 
     <div className="container mx-auto grid grid-cols-2 h-[calc(100vh-3.5rem)]">
       <form className="flex h-full flex-col gap-4 p-4" autoComplete="off">
         <div className="flex gap-3 flex-wrap">
-          {!isDraft && <DeleteButton formAction={deleteAction} />}
           <SaveButton formAction={saveAction} />
         </div>
         {!isDraft && <input type="hidden" name="id" value={noteId} />}

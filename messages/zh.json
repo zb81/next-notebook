@@ -16,7 +16,8 @@
     "upload": "上传 markdown 文件",
     "uploading": "上传中，请稍等...",
     "uploadFailed": "上传失败，请稍候再试",
-    "locale": "切换语言"
+    "locale": "切换语言",
+    "empty": "这里什么都没有，去创建你的第一个笔记吧！"
   },
   "Theme": {
     "toggle": "切换主题",
@@ -49,5 +50,13 @@
     "signUp": "创建账号",
     "invalid_credentials": "用户名或密码错误",
     "pending": "请稍等..."
+  },
+  "Delete": {
+    "title": "确定要删除这条笔记吗?",
+    "description": "此操作无法撤销",
+    "cancel": "取消",
+    "confirm": "确定",
+    "success": "删除成功",
+    "error": "删除失败"
   }
 }

@@ -5,6 +5,7 @@ import { redirect } from "next/navigation"
 import prisma from "@/lib/prisma"
 import { getSessionUserId } from "@/lib/session"
 import { Note } from "@prisma/client"
+import { revalidatePath } from "next/cache"
 
 export async function saveNote(_: unknown, formData: FormData) {
   let id = formData.get('id') as (string | null)
@@ -24,12 +25,6 @@ export async function saveNote(_: unknown, formData: FormData) {
   }
 
   redirect(`/${id}`)
-}
-
-export async function deleteNote(_: unknown, formData: FormData) {
-  const id = formData.get('id') as string
-  await prisma.note.delete({ where: { id } })
-  redirect('/')
 }
 
 export async function uploadNote(_: unknown, formData: FormData) {
@@ -61,4 +56,9 @@ export async function uploadNote(_: unknown, formData: FormData) {
   if (res) {
     redirect(`/${res.id}`)
   }
+}
+
+export async function deleteNote(noteId: string) {
+  await prisma.note.delete({ where: { id: noteId } })
+  revalidatePath('/')
 }
