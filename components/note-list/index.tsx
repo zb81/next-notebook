@@ -5,7 +5,7 @@ import { getTranslations } from 'next-intl/server'
 import { sleep } from '@/lib/utils'
 
 export default async function NoteList() {
-  await sleep(5000)
+  await sleep(500)
   const t = await getTranslations('Basic')
   const userId = await getSessionUserId()
 
