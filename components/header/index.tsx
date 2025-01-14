@@ -15,16 +15,19 @@ export default async function Header() {
   const isLoggedIn = !!session?.user
 
   return (
-    <header className='h-14 pl-4 pr-3 flex items-center justify-between bg-background sticky top-0'>
-      <Link href="/" className='flex items-center'>
-        <Image className='w-7' src={icon} alt="Next Notebook Icon" />
-        <h1 className='ml-2 text-lg'>Next Notebook</h1>
+    <header className="h-14 pl-4 pr-3 flex items-center justify-between bg-background sticky top-0">
+      <Link href="/" className="flex items-center">
+        <Image className="w-7" src={icon} alt="Next Notebook Icon" />
+        <h1 className="ml-2 text-lg">Next Notebook</h1>
       </Link>
 
-      <div className='flex items-center'>
+      <div className="flex items-center">
         {isLoggedIn && (
-          <div className='flex items-center gap-4 mr-3'>
-            <span>{t('welcome')}{session!.user!.name}</span>
+          <div className="flex items-center gap-4 mr-3">
+            <span>
+              {t('welcome')}
+              {session!.user!.name}
+            </span>
             <SignOut />
           </div>
         )}

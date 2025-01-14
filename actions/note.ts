@@ -1,14 +1,14 @@
 'use server'
 
-import { redirect } from "next/navigation"
+import { redirect } from 'next/navigation'
 
-import prisma from "@/lib/prisma"
-import { getSessionUserId } from "@/lib/session"
-import { Note } from "@prisma/client"
-import { revalidatePath } from "next/cache"
+import prisma from '@/lib/prisma'
+import { getSessionUserId } from '@/lib/session'
+import { Note } from '@prisma/client'
+import { revalidatePath } from 'next/cache'
 
 export async function saveNote(_: unknown, formData: FormData) {
-  let id = formData.get('id') as (string | null)
+  let id = formData.get('id') as string | null
   const title = formData.get('title') as string
   const content = formData.get('content') as string
 
@@ -33,10 +33,10 @@ export async function uploadNote(_: unknown, formData: FormData) {
     redirect('/sign-in')
   }
   const file = formData.get('file') as File
-  const buffer = Buffer.from(await file.arrayBuffer());
+  const buffer = Buffer.from(await file.arrayBuffer())
   let res: Note | null = null
   try {
-    const filename = file.name.replace(/\.[^/.]+$/, "")
+    const filename = file.name.replace(/\.[^/.]+$/, '')
     // 调用接口，写入数据库
     res = await prisma.note.create({
       data: {
@@ -45,8 +45,8 @@ export async function uploadNote(_: unknown, formData: FormData) {
         authorId: userId,
       },
       include: {
-        author: true
-      }
+        author: true,
+      },
     })
   } catch (e) {
     console.log(e)

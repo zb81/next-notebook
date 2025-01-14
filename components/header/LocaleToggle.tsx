@@ -1,14 +1,19 @@
 'use client'
 
-import { LanguagesIcon } from "lucide-react";
-import { useTranslations } from 'next-intl';
+import { LanguagesIcon } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 
-import { Button } from "../ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../ui/dropdown-menu';
-import { setUserLocale } from '@/i18n/service';
+import { Button } from '../ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '../ui/dropdown-menu'
+import { setUserLocale } from '@/i18n/service'
 
 export default function LocaleToggle() {
-  const t = useTranslations('Basic');
+  const t = useTranslations('Basic')
 
   function handleSwitch(locale: 'zh' | 'en') {
     setUserLocale(locale)
@@ -23,10 +28,16 @@ export default function LocaleToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="min-w-[80px]">
-        <DropdownMenuItem className='justify-center' onClick={() => handleSwitch('zh')}>
+        <DropdownMenuItem
+          className="justify-center"
+          onClick={() => handleSwitch('zh')}
+        >
           中文
         </DropdownMenuItem>
-        <DropdownMenuItem className='justify-center' onClick={() => handleSwitch('en')}>
+        <DropdownMenuItem
+          className="justify-center"
+          onClick={() => handleSwitch('en')}
+        >
           English
         </DropdownMenuItem>
       </DropdownMenuContent>

@@ -1,19 +1,18 @@
-import Editor from "@/components/editor"
-import prisma from "@/lib/prisma"
-import { Metadata } from "next"
-import { getTranslations } from "next-intl/server"
+import Editor from '@/components/editor'
+import prisma from '@/lib/prisma'
+import { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 
 interface PageProps {
   params: Promise<{ id: string }>
 }
 
-export async function generateMetadata(
-  { params }: PageProps,
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const id = (await params).id
   const note = await prisma.note.findUnique({ where: { id } })
   const t = await getTranslations('Basic')
-
 
   if (!note) {
     return { title: 'Next Notebook' }
@@ -28,7 +27,7 @@ export default async function Page({ params }: PageProps) {
   const id = (await params).id
 
   const note = await prisma.note.findUnique({
-    where: { id }
+    where: { id },
   })
 
   if (!note) {

@@ -11,7 +11,7 @@ export default async function NoteList() {
 
   const notes = await prisma.note.findMany({
     where: { authorId: userId },
-    orderBy: { updatedAt: 'desc' }
+    orderBy: { updatedAt: 'desc' },
   })
 
   if (notes.length === 0) {

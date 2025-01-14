@@ -1,7 +1,7 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server'
 
-import { encryptPassword } from "@/lib/crypt";
-import prisma from "@/lib/prisma";
+import { encryptPassword } from '@/lib/crypt'
+import prisma from '@/lib/prisma'
 
 interface Payload {
   username: string
@@ -14,12 +14,15 @@ export async function POST(request: NextRequest) {
 
   const userExists = await prisma.user.findFirst({
     where: {
-      OR: [{ username }, { email }]
-    }
+      OR: [{ username }, { email }],
+    },
   })
 
   if (userExists) {
-    return NextResponse.json({ error: 'Username or email already exists' }, { status: 400 })
+    return NextResponse.json(
+      { error: 'Username or email already exists' },
+      { status: 400 }
+    )
   }
 
   const { hash, salt } = await encryptPassword(password)
@@ -29,7 +32,7 @@ export async function POST(request: NextRequest) {
       email,
       salt,
       password: hash,
-    }
+    },
   })
 
   return NextResponse.json(user, { status: 200 })

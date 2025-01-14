@@ -20,20 +20,27 @@ export default function Uploader() {
     formRef.current?.requestSubmit()
   }
 
-  return (
-    pending
-      ? t('uploading')
-      : (
-        <form ref={formRef} action={uploadAction}>
-          <input name="userId" hidden defaultValue={session.data?.user?.id} />
-          <input name="errorMessage" hidden defaultValue={t('uploadFailed')} />
-          <input name='file' accept='.md,.txt' type="file" id="upload" hidden onChange={handleChange} />
-          <label htmlFor="upload" className='cursor-pointer text-sm underline underline-offset-2'>
-            {t('upload')}
-          </label>
-          <span className='text-red-500 text-sm ml-4'>{uploadState?.error}</span>
-        </form>
-
-      )
+  return pending ? (
+    t('uploading')
+  ) : (
+    <form ref={formRef} action={uploadAction}>
+      <input name="userId" hidden defaultValue={session.data?.user?.id} />
+      <input name="errorMessage" hidden defaultValue={t('uploadFailed')} />
+      <input
+        name="file"
+        accept=".md,.txt"
+        type="file"
+        id="upload"
+        hidden
+        onChange={handleChange}
+      />
+      <label
+        htmlFor="upload"
+        className="cursor-pointer text-sm underline underline-offset-2"
+      >
+        {t('upload')}
+      </label>
+      <span className="text-red-500 text-sm ml-4">{uploadState?.error}</span>
+    </form>
   )
 }

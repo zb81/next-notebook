@@ -10,10 +10,10 @@ interface Props {
 export default function SaveButton({ formAction }: Props) {
   const { pending } = useFormStatus()
 
-  const t = useTranslations('Basic');
+  const t = useTranslations('Basic')
 
   return (
-    <Button size='sm' formAction={formAction} type='submit' disabled={pending}>
+    <Button size="sm" formAction={formAction} type="submit" disabled={pending}>
       {pending ? t('saving') : t('save')}
     </Button>
   )

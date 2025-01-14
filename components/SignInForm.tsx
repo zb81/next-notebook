@@ -11,7 +11,14 @@ import { useTransition } from 'react'
 import { Input } from './ui/input'
 import { Button } from './ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from './ui/form'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from './ui/form'
 import { signInFormSchema, SignInFormSchema } from '@/lib/zod'
 import InputPassword from './InputPassword'
 
@@ -22,10 +29,12 @@ export default function SignInForm() {
   const pathname = usePathname()
   const router = useRouter()
   const searchParams = useSearchParams()
-  const callbackUrl = decodeURIComponent(searchParams.get('callbackUrl') || '') || '/'
+  const callbackUrl =
+    decodeURIComponent(searchParams.get('callbackUrl') || '') || '/'
   const error = searchParams.get('error')
   const code = searchParams.get('code')
-  const hasError = error === 'CredentialsSignin' && code === 'invalid_credentials'
+  const hasError =
+    error === 'CredentialsSignin' && code === 'invalid_credentials'
 
   const form = useForm<SignInFormSchema>({
     resolver: zodResolver(signInFormSchema(messages)),
@@ -33,7 +42,7 @@ export default function SignInForm() {
     defaultValues: {
       identifier: '',
       password: '',
-    }
+    },
   })
 
   function onSubmit(data: SignInFormSchema) {
@@ -49,17 +58,20 @@ export default function SignInForm() {
   }
 
   return (
-    <div className='h-[calc(100vh-3.5rem)] flex items-center justify-center'>
-      <Card className='-mt-20'>
+    <div className="h-[calc(100vh-3.5rem)] flex items-center justify-center">
+      <Card className="-mt-20">
         <CardHeader>
-          <CardTitle className='text-center'>{t('title')}</CardTitle>
+          <CardTitle className="text-center">{t('title')}</CardTitle>
         </CardHeader>
-        <CardContent className='w-[400px] flex flex-col gap-4'>
+        <CardContent className="w-[400px] flex flex-col gap-4">
           <Form {...form}>
-            <form className='flex flex-col gap-5' onChange={() => {
-              if (hasError)
-                router.replace(pathname)
-            }} onSubmit={form.handleSubmit(onSubmit)}>
+            <form
+              className="flex flex-col gap-5"
+              onChange={() => {
+                if (hasError) router.replace(pathname)
+              }}
+              onSubmit={form.handleSubmit(onSubmit)}
+            >
               <FormField
                 control={form.control}
                 name="identifier"
@@ -89,12 +101,17 @@ export default function SignInForm() {
               />
 
               {isPending ? (
-                <p className='text-center text-sm'>{t('pending')}</p>
+                <p className="text-center text-sm">{t('pending')}</p>
               ) : (
                 <>
-                  {hasError ? <p className='text-red-500 text-sm'>{t(code)}</p> : null}
-                  <Button className='w-full'>{t('signIn')}</Button>
-                  <Link className='text-center text-sm underline underline-offset-4' href="/sign-up">
+                  {hasError ? (
+                    <p className="text-red-500 text-sm">{t(code)}</p>
+                  ) : null}
+                  <Button className="w-full">{t('signIn')}</Button>
+                  <Link
+                    className="text-center text-sm underline underline-offset-4"
+                    href="/sign-up"
+                  >
                     {t('signUp')}
                   </Link>
                 </>
@@ -103,7 +120,6 @@ export default function SignInForm() {
           </Form>
         </CardContent>
       </Card>
-    </div >
-
+    </div>
   )
 }

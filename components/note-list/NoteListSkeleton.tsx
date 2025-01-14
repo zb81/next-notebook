@@ -1,5 +1,11 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card";
-import { Skeleton } from "../ui/skeleton";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '../ui/card'
+import { Skeleton } from '../ui/skeleton'
 
 export default function NoteListSkeleton() {
   return Array.from({ length: 12 }).map((_, i) => (

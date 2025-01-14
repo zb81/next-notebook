@@ -53,20 +53,19 @@ export default function NotePreview({ content, showToc = true }: Props) {
   return (
     <div>
       <div
-        className='prose dark:prose-invert break-words mx-auto pb-8'
+        className="prose dark:prose-invert break-words mx-auto pb-8"
         dangerouslySetInnerHTML={{
-          __html: sanitizeHtml(htmlStr, { allowedTags, allowedAttributes })
+          __html: sanitizeHtml(htmlStr, { allowedTags, allowedAttributes }),
         }}
-      >
-      </div>
+      ></div>
 
       {showToc ? (
-        <ul className='list-none text-sm m-0 p-0 fixed w-[300px] top-[100px] right-[300px]'>
+        <ul className="list-none text-sm m-0 p-0 fixed w-[300px] top-[100px] right-[300px]">
           {toc.map(({ anchor, level, text }, index) => (
             <li key={index}>
               <a
                 href={`#${anchor}`}
-                className='no-underline inline-block w-full hover:underline truncate'
+                className="no-underline inline-block w-full hover:underline truncate"
                 style={{ paddingLeft: `${level - minLevel}rem` }}
               >
                 {text}
@@ -74,9 +73,7 @@ export default function NotePreview({ content, showToc = true }: Props) {
             </li>
           ))}
         </ul>
-      )
-        : null
-      }
+      ) : null}
     </div>
   )
 }
