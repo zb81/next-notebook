@@ -11,7 +11,7 @@ export async function encryptPassword(password: string) {
 export async function comparePassword(
   password: string,
   salt: string,
-  hash: string
+  hash: string,
 ) {
   const newHash = crypto
     .pbkdf2Sync(password, salt, 1000, 64, 'sha256')
