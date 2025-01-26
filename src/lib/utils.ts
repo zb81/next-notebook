@@ -36,3 +36,11 @@ export function extractEnv(key: string, type: 'string' | 'number' = 'string') {
     return n
   }
 }
+
+export function genVerificationCode(length = 6) {
+  let code = ''
+  for (let i = 0; i < length; i++) {
+    code += Math.floor(Math.random() * 10)
+  }
+  return code
+}

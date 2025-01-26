@@ -1,0 +1,64 @@
+{
+  "Basic": {
+    "search": "搜索",
+    "title": "在此输入标题",
+    "content": "在此输入内容",
+    "edit": "编辑",
+    "delete": "删除",
+    "deleting": "删除中...",
+    "save": "保存",
+    "saving": "保存中...",
+    "lastUpdated": "最后更新于",
+    "welcome": "欢迎，",
+    "noteNotFound": "找不到这条笔记",
+    "signOut": "登出",
+    "newNote": "新建",
+    "upload": "上传 markdown 文件",
+    "uploading": "上传中，请稍等...",
+    "uploadFailed": "上传失败，请稍候再试",
+    "locale": "切换语言",
+    "empty": "这里什么都没有，去创建你的第一个笔记吧！"
+  },
+  "Theme": {
+    "toggle": "切换主题",
+    "light": "浅色",
+    "dark": "深色",
+    "system": "跟随系统"
+  },
+  "SignUpForm": {
+    "title": "注册 Next Notebook",
+    "submit": "注册并登录",
+    "username": "用户名",
+    "email": "邮箱",
+    "password": "密码",
+    "confirmPassword": "确认密码",
+    "back": "返回登录",
+    "usernameMin": "用户名不能少于 2 个字符",
+    "usernameMax": "用户名不能超过 12 个字符",
+    "emailValid": "无效的邮箱",
+    "passwordMin": "密码不能少于 6 个字符",
+    "passwordMax": "密码不能超过 20 个字符",
+    "confirmPasswordSame": "两次输入的密码不一致",
+    "emailRequired": "邮箱不能为空",
+    "passwordRequired": "密码不能为空"
+  },
+  "SignInForm": {
+    "title": "登录到 Next Notebook",
+    "identifier": "用户名或邮箱",
+    "password": "密码",
+    "identifierRequired": "用户名或邮箱不能为空",
+    "passwordRequired": "密码不能为空",
+    "signIn": "登录",
+    "signUp": "创建账号",
+    "invalid_credentials": "用户名或密码错误",
+    "pending": "请稍等..."
+  },
+  "Delete": {
+    "title": "确定要删除这条笔记吗?",
+    "description": "此操作无法撤销",
+    "cancel": "取消",
+    "confirm": "确定",
+    "success": "删除成功",
+    "error": "删除失败"
+  }
+}

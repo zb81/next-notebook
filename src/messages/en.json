@@ -1,0 +1,64 @@
+{
+  "Basic": {
+    "search": "Search",
+    "title": "Enter title here",
+    "content": "Enter content here",
+    "edit": "EDIT",
+    "delete": "DELETE",
+    "deleting": "Deleting...",
+    "save": "SAVE",
+    "saving": "Saving...",
+    "lastUpdated": "Last updated on",
+    "welcome": "Welcome, ",
+    "noteNotFound": "Note not found",
+    "signOut": "Sign out",
+    "newNote": "New",
+    "upload": "Upload markdown file",
+    "uploading": "Uploading, please wait...",
+    "uploadFailed": "Upload failed, please try again later",
+    "locale": "Switch language",
+    "empty": "There's nothing here, go create your first note!"
+  },
+  "Theme": {
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "SignUpForm": {
+    "title": "Sign up to Next Notebook",
+    "submit": "Sign up and sign in",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "back": "Back to sign in",
+    "usernameMin": "Username must be at least 2 characters",
+    "usernameMax": "Username cannot exceed 12 characters",
+    "emailValid": "Invalid email",
+    "passwordMin": "Password must be at least 6 characters",
+    "passwordMax": "Password cannot exceed 20 characters",
+    "confirmPasswordSame": "The two passwords entered do not match",
+    "emailRequired": "Email can not be empty",
+    "passwordRequired": "Password can not be emtpy"
+  },
+  "SignInForm": {
+    "title": "Sign in to Next Notebook",
+    "identifier": "Username or email",
+    "password": "Password",
+    "identifierRequired": "Username or email and password are required",
+    "passwordRequired": "Password is required",
+    "signIn": "Sign in",
+    "signUp": "Create an account",
+    "invalid_credentials": "Invalid username or password",
+    "pending": "Pease wait..."
+  },
+  "Delete": {
+    "title": "Are you sure you want to delete this note?",
+    "description": "This operation cannot be undone",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "success": "Deleted successfully",
+    "error": "Failed to delete"
+  }
+}

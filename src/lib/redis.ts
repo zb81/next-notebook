@@ -14,3 +14,6 @@ const redis = globalThis.redisGlobal ?? redisSingleton()
 export default redis
 
 if (process.env.NODE_ENV !== 'production') globalThis.redisGlobal = redis
+
+export const signUpVerificationCodeKey = (email: string) =>
+  `signUpVerificationCode:${email}`

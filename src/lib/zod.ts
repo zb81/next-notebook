@@ -3,23 +3,17 @@ import { z } from 'zod'
 
 export function signUpFormSchema(messages: AbstractIntlMessages) {
   const m = messages['SignUpForm'] as Record<string, string>
-  return z
-    .object({
-      username: z
-        .string()
-        .min(2, { message: m['usernameMin'] })
-        .max(12, { message: m['usernameMax'] }),
-      email: z.string().email({ message: m['emailValid'] }),
-      password: z
-        .string()
-        .min(6, { message: m['passwordMin'] })
-        .max(18, { message: m['passwordMax'] }),
-      confirmPassword: z.string(),
-    })
-    .refine(data => data.password === data.confirmPassword, {
-      message: m['confirmPasswordSame'],
-      path: ['confirmPassword'],
-    })
+  return z.object({
+    email: z
+      .string()
+      .nonempty({ message: m['emailRequired'] })
+      .email({ message: m['emailValid'] }),
+    password: z
+      .string()
+      .nonempty({ message: m['passwordRequired'] })
+      .min(6, { message: m['passwordMin'] })
+      .max(18, { message: m['passwordMax'] }),
+  })
 }
 export type SignUpFormSchema = z.infer<ReturnType<typeof signUpFormSchema>>
 
