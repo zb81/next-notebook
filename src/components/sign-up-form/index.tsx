@@ -94,7 +94,7 @@ export default function SignUpForm() {
               <FormItem>
                 <FormLabel>{t('email')}</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input autoFocus {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

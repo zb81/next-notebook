@@ -29,7 +29,7 @@ export default async function Page({ searchParams }: SearchParamsProps) {
             <span className="text-gray-500">{t('noAccount')}</span>
 
             <Link
-              className="underline ml-1"
+              className="underline ml-1 underline-offset-4"
               href={`/sign-up?callbackUrl=${cbUrl}`}
             >
               {t('signUp')}

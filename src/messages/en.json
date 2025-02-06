@@ -8,6 +8,12 @@
     "dark": "Dark",
     "system": "System"
   },
+  "Edit": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "titleRequired": "Title cannot be empty",
+    "contentRequired": "Content cannot be empty"
+  },
   "Auth": {
     "email": "Email",
     "password": "Password",

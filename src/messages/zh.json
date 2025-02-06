@@ -25,6 +25,12 @@
     "dark": "深色",
     "system": "跟随系统"
   },
+  "Edit": {
+    "save": "保存",
+    "cancel": "取消",
+    "titleRequired": "标题不能为空",
+    "contentRequired": "内容不能为空"
+  },
   "Auth": {
     "email": "邮箱",
     "password": "密码",

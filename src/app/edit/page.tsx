@@ -1,5 +1,10 @@
+import NoteForm from '@/components/note-form'
 import React from 'react'
 
-export default function Page() {
-  return <div>Edit</div>
+export default async function Page() {
+  return (
+    <div>
+      <NoteForm />
+    </div>
+  )
 }

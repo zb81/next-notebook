@@ -18,6 +18,7 @@ import { Button } from '../ui/button'
 import { useState, useTransition } from 'react'
 import { signIn } from 'next-auth/react'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { useToast } from '@/hooks/use-toast'
 
 export default function SignInForm() {
   const messages = useMessages()
@@ -35,6 +36,7 @@ export default function SignInForm() {
 
   const [pending, startTransition] = useTransition()
   const [error, setError] = useState<string>()
+  const { toast } = useToast()
 
   const onSubmit = (data: SignInFormSchema) => {
     startTransition(async () => {
@@ -45,6 +47,10 @@ export default function SignInForm() {
       if (res?.code) {
         setError(res.code)
       } else {
+        toast({
+          title: '提示',
+          description: '登录成功，欢迎！',
+        })
         const cbUrl = searchParams.get('callbackUrl')
         if (typeof cbUrl === 'string') {
           router.replace(cbUrl.replace(location.origin, ''))
@@ -69,7 +75,7 @@ export default function SignInForm() {
             <FormItem>
               <FormLabel>{t('email')}</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input autoFocus {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

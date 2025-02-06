@@ -25,3 +25,12 @@ export function signInFormSchema(messages: AbstractIntlMessages) {
   })
 }
 export type SignInFormSchema = z.infer<ReturnType<typeof signInFormSchema>>
+
+export function noteFormSchema(messages: AbstractIntlMessages) {
+  const m = messages['Edit'] as Record<string, string>
+  return z.object({
+    title: z.string().trim().nonempty({ message: m['titleRequired'] }),
+    content: z.string().trim().nonempty({ message: m['contentRequired'] }),
+  })
+}
+export type NoteFormSchema = z.infer<ReturnType<typeof noteFormSchema>>
