@@ -25,33 +25,22 @@
     "dark": "深色",
     "system": "跟随系统"
   },
-  "SignUpForm": {
-    "title": "注册 Next Notebook",
-    "submit": "注册并登录",
-    "username": "用户名",
+  "Auth": {
     "email": "邮箱",
     "password": "密码",
-    "confirmPassword": "确认密码",
-    "back": "返回登录",
-    "usernameMin": "用户名不能少于 2 个字符",
-    "usernameMax": "用户名不能超过 12 个字符",
+    "emailRequired": "邮箱不能为空",
+    "passwordRequired": "密码不能为空",
     "emailValid": "无效的邮箱",
     "passwordMin": "密码不能少于 6 个字符",
     "passwordMax": "密码不能超过 20 个字符",
-    "confirmPasswordSame": "两次输入的密码不一致",
-    "emailRequired": "邮箱不能为空",
-    "passwordRequired": "密码不能为空"
-  },
-  "SignInForm": {
-    "title": "登录到 Next Notebook",
-    "identifier": "用户名或邮箱",
-    "password": "密码",
-    "identifierRequired": "用户名或邮箱不能为空",
-    "passwordRequired": "密码不能为空",
+    "signUpTitle": "注册 Next Notebook",
+    "signInTitle": "登录到 Next Notebook",
+    "signUp": "注册",
     "signIn": "登录",
-    "signUp": "创建账号",
-    "invalid_credentials": "用户名或密码错误",
-    "pending": "请稍等..."
+    "invalid_credentials": "邮箱或密码错误",
+    "noAccount": "没有账号？",
+    "haveAccount": "已有账号？",
+    "next": "下一步"
   },
   "Delete": {
     "title": "确定要删除这条笔记吗?",

@@ -2,7 +2,7 @@ import { AbstractIntlMessages } from 'next-intl'
 import { z } from 'zod'
 
 export function signUpFormSchema(messages: AbstractIntlMessages) {
-  const m = messages['SignUpForm'] as Record<string, string>
+  const m = messages['Auth'] as Record<string, string>
   return z.object({
     email: z
       .string()
@@ -18,9 +18,9 @@ export function signUpFormSchema(messages: AbstractIntlMessages) {
 export type SignUpFormSchema = z.infer<ReturnType<typeof signUpFormSchema>>
 
 export function signInFormSchema(messages: AbstractIntlMessages) {
-  const m = messages['SignInForm'] as Record<string, string>
+  const m = messages['Auth'] as Record<string, string>
   return z.object({
-    email: z.string().trim().nonempty({ message: m['identifierRequired'] }),
+    email: z.string().trim().nonempty({ message: m['emailRequired'] }),
     password: z.string().trim().nonempty({ message: m['passwordRequired'] }),
   })
 }

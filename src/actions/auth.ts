@@ -42,7 +42,6 @@ export async function checkCodeAndSignUp({
         email,
         hash,
         hashAlgorithm,
-        username: email,
         salt,
         iterations,
       },

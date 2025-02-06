@@ -26,7 +26,7 @@ export default async function Header() {
           <div className="flex items-center gap-4 mr-3">
             <span>
               {t('welcome')}
-              {session!.user!.name}
+              {session!.user!.email}
             </span>
             <SignOut />
           </div>

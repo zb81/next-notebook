@@ -1,11 +1,9 @@
-import { PropsWithChildren } from 'react'
-
-export interface SearchParamsProps extends PropsWithChildren {
+export interface SearchParamsProps {
   searchParams: Promise<{
     [key: string]: string | string[] | undefined
   }>
 }
 
-export interface ParamsProps<T> extends PropsWithChildren {
+export interface ParamsProps<T> {
   params: Promise<T>
 }
