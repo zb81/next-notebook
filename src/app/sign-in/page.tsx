@@ -1,3 +1,4 @@
+import SignInForm from '@/components/sign-in-form'
 import { headers } from 'next/headers'
 import Link from 'next/link'
 import React from 'react'
@@ -16,8 +17,7 @@ export default async function Page({ searchParams }: SearchParamsProps) {
 
   return (
     <div>
-      Sign In
-      <p>{cbUrl}</p>
+      <SignInForm />
       <Link href={`/sign-up?callbackUrl=${cbUrl}`}>Sign Up</Link>
     </div>
   )

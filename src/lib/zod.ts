@@ -20,10 +20,7 @@ export type SignUpFormSchema = z.infer<ReturnType<typeof signUpFormSchema>>
 export function signInFormSchema(messages: AbstractIntlMessages) {
   const m = messages['SignInForm'] as Record<string, string>
   return z.object({
-    identifier: z
-      .string()
-      .trim()
-      .nonempty({ message: m['identifierRequired'] }),
+    email: z.string().trim().nonempty({ message: m['identifierRequired'] }),
     password: z.string().trim().nonempty({ message: m['passwordRequired'] }),
   })
 }

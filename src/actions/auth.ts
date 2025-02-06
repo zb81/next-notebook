@@ -34,6 +34,7 @@ export async function checkCodeAndSignUp({
 }: SignUpFormSchema & { code: string }) {
   const storedCode = await redis.get(signUpVerificationCodeKey(email))
   if (storedCode === code) {
+    await redis.del(signUpVerificationCodeKey(email))
     const { hash, hashAlgorithm, salt, iterations } =
       await hashPassword(password)
     await prisma.user.create({
@@ -41,7 +42,7 @@ export async function checkCodeAndSignUp({
         email,
         hash,
         hashAlgorithm,
-        username: '',
+        username: email,
         salt,
         iterations,
       },

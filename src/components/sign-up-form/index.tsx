@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SignUpFormSchema, signUpFormSchema } from '@/lib/zod'
 import { useMessages, useTranslations } from 'next-intl'
+import { REGEXP_ONLY_DIGITS } from 'input-otp'
 import {
   Form,
   FormControl,
@@ -20,11 +21,13 @@ import {
 import InputPassword from '../ui/input-password'
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card'
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '../ui/input-otp'
+import { useToast } from '@/hooks/use-toast'
 
 export default function SignUpForm() {
   const [pending, startTransition] = useTransition()
   const t = useTranslations('SignUpForm')
   const messages = useMessages()
+  const { toast } = useToast()
 
   const [step, setStep] = useState(1)
 
@@ -41,6 +44,15 @@ export default function SignUpForm() {
       const valid = await validateEmailAndSendCode(data)
       if (valid) {
         setStep(2)
+        toast({
+          title: '提示',
+          description: '验证码已发送，请查收。',
+        })
+      } else {
+        form.setError('email', {
+          type: 'disabled',
+          message: '该邮箱已被注册',
+        })
       }
     })
   }
@@ -104,16 +116,27 @@ export default function SignUpForm() {
           ) : null}
 
           {step === 2 ? (
-            <InputOTP maxLength={6} onComplete={onVerifyCode}>
-              <InputOTPGroup>
-                <InputOTPSlot index={0} />
-                <InputOTPSlot index={1} />
-                <InputOTPSlot index={2} />
-                <InputOTPSlot index={3} />
-                <InputOTPSlot index={4} />
-                <InputOTPSlot index={5} />
-              </InputOTPGroup>
-            </InputOTP>
+            <div>
+              <InputOTP
+                maxLength={6}
+                pattern={REGEXP_ONLY_DIGITS}
+                disabled={pending}
+                onComplete={onVerifyCode}
+              >
+                <InputOTPGroup className="w-full">
+                  {[0, 1, 2, 3, 4, 5].map(index => (
+                    <InputOTPSlot
+                      key={index}
+                      className="w-[60px] h-[60px]"
+                      index={index}
+                    />
+                  ))}
+                </InputOTPGroup>
+              </InputOTP>
+              <p className="text-center mt-4 text-sm">
+                {pending ? '请等待' : '请输入验证码'}
+              </p>
+            </div>
           ) : null}
         </CardContent>
       </Card>
