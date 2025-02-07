@@ -1,10 +1,6 @@
-import NoteForm from '@/components/note-form'
+import NoteEditor from '@/components/note-editor'
 import React from 'react'
 
 export default async function Page() {
-  return (
-    <div>
-      <NoteForm />
-    </div>
-  )
+  return <NoteEditor defaultValues={{ title: 'Untitled', content: '' }} />
 }

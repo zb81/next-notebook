@@ -2,7 +2,7 @@
 
 import { saveNote } from '@/actions/note'
 import { useMessages, useTranslations } from 'next-intl'
-import React, { useTransition } from 'react'
+import React, { memo, useEffect, useTransition } from 'react'
 import { Input } from './ui/input'
 import { Textarea } from './ui/textarea'
 import { Button } from './ui/button'
@@ -12,7 +12,12 @@ import { NoteFormSchema, noteFormSchema } from '@/lib/zod'
 import { Form, FormControl, FormField, FormItem, FormMessage } from './ui/form'
 import { useRouter } from 'next/navigation'
 
-export default function NoteForm() {
+interface Props {
+  defaultValues?: NoteFormSchema
+  onChange?: (values: NoteFormSchema) => void
+}
+
+export default memo(function NoteForm({ defaultValues, onChange }: Props) {
   const t = useTranslations('Edit')
   const message = useMessages()
   const [pending, startTransition] = useTransition()
@@ -20,11 +25,9 @@ export default function NoteForm() {
 
   const form = useForm<NoteFormSchema>({
     resolver: zodResolver(noteFormSchema(message)),
-    defaultValues: {
-      title: 'Untitled',
-      content: '',
-    },
+    defaultValues,
   })
+  const formValues = form.watch()
 
   const onSubmit = (data: NoteFormSchema) => {
     startTransition(async () => {
@@ -34,6 +37,10 @@ export default function NoteForm() {
       }
     })
   }
+
+  useEffect(() => {
+    onChange?.(formValues)
+  }, [formValues])
 
   return (
     <Form {...form}>
@@ -68,4 +75,4 @@ export default function NoteForm() {
       </form>
     </Form>
   )
-}
+})

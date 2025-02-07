@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button'
 import prisma from '@/lib/prisma'
+import { formatDate } from '@/lib/utils'
 import Link from 'next/link'
 import React from 'react'
 
@@ -17,7 +18,11 @@ export default async function Home() {
 
       <ul>
         {notes.map(note => (
-          <li key={note.id}>{note.title}</li>
+          <li key={note.id}>
+            <h2>{note.title}</h2>
+            <p>{formatDate(note.updatedAt)}</p>
+            <Link href={`/edit/${note.id}`}>Edit</Link>
+          </li>
         ))}
       </ul>
     </div>
