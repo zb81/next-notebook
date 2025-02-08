@@ -26,9 +26,6 @@ importers:
       '@radix-ui/react-toast':
         specifier: ^1.2.5
         version: 1.2.5(@types/react-dom@19.0.3(@types/react@19.0.7))(@types/react@19.0.7)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@tailwindcss/line-clamp':
-        specifier: ^0.4.4
-        version: 0.4.4(tailwindcss@3.4.17)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -805,11 +802,6 @@ packages:
 
   '@swc/helpers@0.5.15':
     resolution: {integrity: sha512-JQ5TuMi45Owi4/BIMAJBoSQoOJu12oOk/gADqlcUL9JEdHB8vyjUSsxqeNXnmXHjYKMi2WcYtezGEEhqUI/E2g==}
-
-  '@tailwindcss/line-clamp@0.4.4':
-    resolution: {integrity: sha512-5U6SY5z8N42VtrCrKlsTAA35gy2VSyYtHWCsg1H87NU1SXnEfekTVlrga9fzUDrrHcGi2Lb5KenUWb4lRQT5/g==}
-    peerDependencies:
-      tailwindcss: '>=2.0.0 || >=3.0.0 || >=3.0.0-alpha.1'
 
   '@tailwindcss/typography@0.5.16':
     resolution: {integrity: sha512-0wDLwCVF5V3x3b1SGXPCDcdsbDHMBe+lkFzBRaHeLvNi+nrrnZ1lA18u+OTWO8iSWU2GxUOCvlXtDuqftc1oiA==}
@@ -3156,10 +3148,6 @@ snapshots:
   '@swc/helpers@0.5.15':
     dependencies:
       tslib: 2.8.1
-
-  '@tailwindcss/line-clamp@0.4.4(tailwindcss@3.4.17)':
-    dependencies:
-      tailwindcss: 3.4.17
 
   '@tailwindcss/typography@0.5.16(tailwindcss@3.4.17)':
     dependencies:

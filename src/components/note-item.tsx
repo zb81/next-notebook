@@ -15,12 +15,17 @@ export default function NoteItem({ note }: { note: Note & { author: User } }) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>
-          <h2>{note.title}</h2>
+        <CardTitle className="mb-2">
+          <Link
+            href={`/note/${note.id}`}
+            className="underline underline-offset-4"
+          >
+            <h2>{note.title}</h2>
+          </Link>
         </CardTitle>
         <CardDescription>由 {note.author.email} 创建</CardDescription>
         <CardDescription>
-          <span>最后编辑于：{formatDate(note.updatedAt)}</span>
+          最后编辑于：{formatDate(note.updatedAt)}
         </CardDescription>
       </CardHeader>
 
