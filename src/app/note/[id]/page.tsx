@@ -1,3 +1,4 @@
+import NotePreview from '@/components/note-preview'
 import prisma from '@/lib/prisma'
 import { formatDate } from '@/lib/utils'
 import React from 'react'
@@ -21,7 +22,7 @@ export default async function Page({ params }: ParamsProps<{ id: string }>) {
       <p className="text-sm text-center">
         最后编辑于：{formatDate(note.updatedAt)}
       </p>
-      <div>{note.content}</div>
+      <NotePreview content={note.content} />
     </div>
   )
 }

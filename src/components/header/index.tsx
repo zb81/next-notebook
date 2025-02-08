@@ -7,6 +7,7 @@ import { auth } from '@/auth'
 import LocaleToggle from './locale-toggle'
 import ThemeToggle from './theme-toggle'
 import { SignOut } from './sign-out'
+import SignIn from './sign-in'
 
 export default async function Header() {
   const t = await getTranslations('Basic')
@@ -22,7 +23,7 @@ export default async function Header() {
       </Link>
 
       <div className="flex items-center">
-        {isLoggedIn && (
+        {isLoggedIn ? (
           <div className="flex items-center gap-4 mr-3">
             <span>
               {t('welcome')}
@@ -30,6 +31,8 @@ export default async function Header() {
             </span>
             <SignOut />
           </div>
+        ) : (
+          <SignIn />
         )}
         <ThemeToggle />
         <LocaleToggle />

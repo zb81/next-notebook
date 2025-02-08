@@ -5,8 +5,15 @@ import React from 'react'
 import { SearchParamsProps } from '~/index'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { getTranslations } from 'next-intl/server'
+import { auth } from '@/auth'
+import { redirect } from 'next/navigation'
 
 export default async function Page({ searchParams }: SearchParamsProps) {
+  const session = await auth()
+  if (session?.user?.id) {
+    redirect('/')
+  }
+
   const t = await getTranslations('Auth')
 
   let cbUrl = (await searchParams)['callbackUrl']

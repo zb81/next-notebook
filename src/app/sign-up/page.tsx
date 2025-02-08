@@ -5,8 +5,15 @@ import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
 import { SearchParamsProps } from '~/index'
 import { headers } from 'next/headers'
+import { auth } from '@/auth'
+import { redirect } from 'next/navigation'
 
 export default async function Page({ searchParams }: SearchParamsProps) {
+  const session = await auth()
+  if (session?.user?.id) {
+    redirect('/')
+  }
+
   const t = await getTranslations('Auth')
   let cbUrl = (await searchParams)['callbackUrl']
   const headerList = await headers()

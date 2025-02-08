@@ -52,7 +52,7 @@ export default function SignInForm() {
           description: '登录成功，欢迎！',
         })
         const cbUrl = searchParams.get('callbackUrl')
-        if (typeof cbUrl === 'string') {
+        if (typeof cbUrl === 'string' && cbUrl.startsWith(location.origin)) {
           router.replace(cbUrl.replace(location.origin, ''))
         } else {
           router.replace('/')

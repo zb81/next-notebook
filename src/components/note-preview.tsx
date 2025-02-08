@@ -1,7 +1,7 @@
-import { NoteFormSchema } from '@/lib/zod'
 import React from 'react'
 import { marked } from 'marked'
 import sanitizeHtml from 'sanitize-html'
+import { codeToHtml } from 'shiki'
 
 const allowedTags = sanitizeHtml.defaults.allowedTags.concat(['img'])
 const allowedAttributes = Object.assign(
@@ -15,21 +15,36 @@ const allowedAttributes = Object.assign(
     h4: ['id', 'style'],
     h5: ['id', 'style'],
     h6: ['id', 'style'],
+    span: ['style'],
   },
 )
 
-export default function NotePreview({ title, content }: NoteFormSchema) {
-  const htmlStr = marked(content, { async: false })
+export default async function NotePreview({ content }: { content: string }) {
+  marked.use({
+    async: true,
+    async walkTokens(token) {
+      if (token.type === 'code') {
+        const html = await codeToHtml(token.text, {
+          lang: token.lang || 'text',
+          theme: 'vitesse-dark',
+        })
+        Object.assign(token, {
+          type: 'html',
+          block: true,
+          text: html,
+        })
+      }
+    },
+  })
+
+  const htmlStr = await marked(content, { async: true })
 
   return (
-    <div className="prose dark:prose-invert">
-      <h1>{title}</h1>
-
-      <div
-        dangerouslySetInnerHTML={{
-          __html: sanitizeHtml(htmlStr, { allowedTags, allowedAttributes }),
-        }}
-      ></div>
-    </div>
+    <div
+      className="prose dark:prose-invert"
+      dangerouslySetInnerHTML={{
+        __html: sanitizeHtml(htmlStr, { allowedTags, allowedAttributes }),
+      }}
+    ></div>
   )
 }
