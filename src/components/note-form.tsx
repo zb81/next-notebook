@@ -40,7 +40,7 @@ export default memo(function NoteForm({ defaultValues, onChange }: Props) {
 
   useEffect(() => {
     onChange?.(formValues)
-  }, [formValues])
+  }, [formValues, onChange])
 
   return (
     <Form {...form}>

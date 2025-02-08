@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import type { Config } from 'tailwindcss'
 
 export default {
@@ -66,7 +67,19 @@ export default {
         'caret-blink': 'caret-blink 1.25s ease-out infinite',
       },
     },
+    screens: {
+      sm: '375px',
+      md: '720px',
+      lg: '1000px',
+      xl: '1380px',
+    },
+    container: {
+      center: true,
+    },
   },
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
-  plugins: [require('@tailwindcss/typography'), require('tailwindcss-animate')],
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('tailwindcss-animate'),
+    require('@tailwindcss/line-clamp'),
+  ],
 } satisfies Config
