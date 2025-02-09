@@ -7,9 +7,8 @@ import React from 'react'
 
 export default async function Home() {
   const notes = await prisma.note.findMany({
-    skip: 0,
-    take: 10,
     include: { author: true },
+    orderBy: { updatedAt: 'desc' },
   })
 
   const session = await auth()

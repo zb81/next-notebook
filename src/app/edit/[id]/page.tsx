@@ -13,6 +13,9 @@ export default async function Page({ params }: ParamsProps<{ id: string }>) {
   }
 
   return (
-    <NoteEditor defaultValues={{ title: note.title, content: note.content }} />
+    <NoteEditor
+      id={id}
+      defaultValues={{ title: note.title, content: note.content }}
+    />
   )
 }
