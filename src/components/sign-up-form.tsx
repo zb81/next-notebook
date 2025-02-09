@@ -2,9 +2,9 @@
 
 import React, { useState, useTransition } from 'react'
 import { signIn } from 'next-auth/react'
-import { Button } from '../ui/button'
+import { Button } from './ui/button'
 import { checkCodeAndSignUp, validateEmailAndSendCode } from '@/actions/auth'
-import { Input } from '../ui/input'
+import { Input } from './ui/input'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { SignUpFormSchema, signUpFormSchema } from '@/lib/zod'
@@ -17,9 +17,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '../ui/form'
-import InputPassword from '../ui/input-password'
-import { InputOTP, InputOTPGroup, InputOTPSlot } from '../ui/input-otp'
+} from './ui/form'
+import InputPassword from './ui/input-password'
+import { InputOTP, InputOTPGroup, InputOTPSlot } from './ui/input-otp'
 import { useToast } from '@/hooks/use-toast'
 import { useRouter, useSearchParams } from 'next/navigation'
 

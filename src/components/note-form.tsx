@@ -44,7 +44,10 @@ export default memo(function NoteForm({ defaultValues, onChange }: Props) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form
+        className="flex flex-col gap-3 p-2"
+        onSubmit={form.handleSubmit(onSubmit)}
+      >
         <FormField
           control={form.control}
           name="title"
@@ -62,9 +65,9 @@ export default memo(function NoteForm({ defaultValues, onChange }: Props) {
           control={form.control}
           name="content"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="h-1/2">
               <FormControl>
-                <Textarea {...field} />
+                <Textarea className="resize-none" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

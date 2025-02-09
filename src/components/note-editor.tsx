@@ -2,13 +2,8 @@
 
 import React, { useCallback, useState } from 'react'
 import NoteForm from './note-form'
-import NotePreview from './note-preview'
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from './ui/resizable'
 import { NoteFormSchema } from '@/lib/zod'
+import NotePreviewClient from './note-preview-client'
 
 interface Props {
   defaultValues: NoteFormSchema
@@ -22,16 +17,13 @@ export default function NoteEditor({ defaultValues }: Props) {
   }, [])
 
   return (
-    <ResizablePanelGroup direction="horizontal">
-      <ResizablePanel className="p-2">
-        <NoteForm defaultValues={defaultValues} onChange={onChange} />
-      </ResizablePanel>
+    <div className="grid grid-cols-2 h-[calc(100vh-3.5rem)]">
+      <NoteForm defaultValues={defaultValues} onChange={onChange} />
 
-      <ResizableHandle />
-
-      <ResizablePanel className="p-2">
-        <NotePreview {...formData} />
-      </ResizablePanel>
-    </ResizablePanelGroup>
+      <div className="p-2 prose dark:prose-invert">
+        <h1 className="text-center">{formData.title}</h1>
+        <NotePreviewClient content={formData.content} />
+      </div>
+    </div>
   )
 }

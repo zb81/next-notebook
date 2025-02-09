@@ -2,22 +2,7 @@ import React from 'react'
 import { marked } from 'marked'
 import sanitizeHtml from 'sanitize-html'
 import { codeToHtml } from 'shiki'
-
-const allowedTags = sanitizeHtml.defaults.allowedTags.concat(['img'])
-const allowedAttributes = Object.assign(
-  {},
-  sanitizeHtml.defaults.allowedAttributes,
-  {
-    img: ['alt', 'src'],
-    h1: ['id', 'style'],
-    h2: ['id', 'style'],
-    h3: ['id', 'style'],
-    h4: ['id', 'style'],
-    h5: ['id', 'style'],
-    h6: ['id', 'style'],
-    span: ['style'],
-  },
-)
+import { allowedAttributes, allowedTags } from '@/lib/sanitize'
 
 export default async function NotePreview({ content }: { content: string }) {
   marked.use({

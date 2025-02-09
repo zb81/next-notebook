@@ -11,10 +11,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '../ui/form'
-import { Input } from '../ui/input'
-import InputPassword from '../ui/input-password'
-import { Button } from '../ui/button'
+} from './ui/form'
+import { Input } from './ui/input'
+import InputPassword from './ui/input-password'
+import { Button } from './ui/button'
 import { useState, useTransition } from 'react'
 import { signIn } from 'next-auth/react'
 import { useRouter, useSearchParams } from 'next/navigation'
