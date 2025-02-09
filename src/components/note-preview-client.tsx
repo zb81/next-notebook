@@ -21,7 +21,7 @@ export default function NotePreview({ content }: { content: string }) {
 
   return (
     <div
-      className="prose dark:prose-invert"
+      className="prose dark:prose-invert mx-auto"
       dangerouslySetInnerHTML={{
         __html: htmlStr,
       }}

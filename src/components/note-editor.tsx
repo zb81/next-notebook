@@ -20,7 +20,7 @@ export default function NoteEditor({ defaultValues }: Props) {
     <div className="grid grid-cols-2 h-[calc(100vh-3.5rem)]">
       <NoteForm defaultValues={defaultValues} onChange={onChange} />
 
-      <div className="p-2 prose dark:prose-invert">
+      <div className="px-3 py-2 break-all overflow-auto">
         <h1 className="text-center">{formData.title}</h1>
         <NotePreviewClient content={formData.content} />
       </div>

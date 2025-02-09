@@ -26,7 +26,7 @@ export default async function NotePreview({ content }: { content: string }) {
 
   return (
     <div
-      className="prose dark:prose-invert"
+      className="prose dark:prose-invert pb-14"
       dangerouslySetInnerHTML={{
         __html: sanitizeHtml(htmlStr, { allowedTags, allowedAttributes }),
       }}

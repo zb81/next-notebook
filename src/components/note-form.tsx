@@ -2,7 +2,7 @@
 
 import { saveNote } from '@/actions/note'
 import { useMessages, useTranslations } from 'next-intl'
-import React, { memo, useEffect, useTransition } from 'react'
+import React, { memo, useEffect, useRef, useTransition } from 'react'
 import { Input } from './ui/input'
 import { Textarea } from './ui/textarea'
 import { Button } from './ui/button'
@@ -15,13 +15,15 @@ import { useRouter } from 'next/navigation'
 interface Props {
   defaultValues?: NoteFormSchema
   onChange?: (values: NoteFormSchema) => void
+  id?: string
 }
 
-export default memo(function NoteForm({ defaultValues, onChange }: Props) {
+export default memo(function NoteForm({ defaultValues, onChange, id }: Props) {
   const t = useTranslations('Edit')
   const message = useMessages()
   const [pending, startTransition] = useTransition()
   const router = useRouter()
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const form = useForm<NoteFormSchema>({
     resolver: zodResolver(noteFormSchema(message)),
@@ -31,7 +33,7 @@ export default memo(function NoteForm({ defaultValues, onChange }: Props) {
 
   const onSubmit = (data: NoteFormSchema) => {
     startTransition(async () => {
-      const noteId = await saveNote(data)
+      const noteId = await saveNote(data, id)
       if (noteId) {
         router.replace(`/note/${noteId}`)
       }
@@ -42,19 +44,53 @@ export default memo(function NoteForm({ defaultValues, onChange }: Props) {
     onChange?.(formValues)
   }, [formValues, onChange])
 
+  const onFile = () => {
+    fileInputRef.current?.click()
+  }
+
+  const onFileChange: React.ChangeEventHandler<HTMLInputElement> = e => {
+    const file = e.target.files?.[0]
+    if (file instanceof File) {
+      form.setValue('title', file.name)
+      const reader = new FileReader()
+      reader.readAsText(file)
+      reader.addEventListener('load', () => {
+        form.setValue('content', reader.result as string)
+      })
+    }
+  }
+
   return (
     <Form {...form}>
       <form
         className="flex flex-col gap-3 p-2"
         onSubmit={form.handleSubmit(onSubmit)}
       >
+        <div className="flex gap-2">
+          <Button onClick={() => router.back()} variant="outline" type="button">
+            返回
+          </Button>
+          <Button type="button" onClick={onFile}>
+            选择文件
+          </Button>
+          <Button disabled={pending}>{t('save')}</Button>
+        </div>
+
+        <input
+          ref={fileInputRef}
+          accept=".md,.txt"
+          type="file"
+          hidden
+          onChange={onFileChange}
+        />
+
         <FormField
           control={form.control}
           name="title"
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input {...field} />
+                <Input autoFocus {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -67,14 +103,15 @@ export default memo(function NoteForm({ defaultValues, onChange }: Props) {
           render={({ field }) => (
             <FormItem className="h-1/2">
               <FormControl>
-                <Textarea className="resize-none" {...field} />
+                <Textarea
+                  className="h-[calc(100vh-15rem)] resize-none"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-
-        <Button disabled={pending}>{t('save')}</Button>
       </form>
     </Form>
   )
