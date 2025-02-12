@@ -8,6 +8,8 @@ import LocaleToggle from './locale-toggle'
 import ThemeToggle from './theme-toggle'
 import { SignOut } from './sign-out'
 import SignIn from './sign-in'
+import { TdesignLogoGithubFilled } from '../icons'
+import { Button } from '../ui/button'
 
 export default async function Header() {
   const t = await getTranslations('Basic')
@@ -36,6 +38,11 @@ export default async function Header() {
         )}
         <ThemeToggle />
         <LocaleToggle />
+        <Link target="_blank" href="https://github.com/zb81/next-notebook">
+          <Button variant="ghost" size="icon" title="Source code">
+            <TdesignLogoGithubFilled />
+          </Button>
+        </Link>
       </div>
     </header>
   )
